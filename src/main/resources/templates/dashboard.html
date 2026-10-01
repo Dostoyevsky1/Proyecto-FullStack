@@ -13,13 +13,19 @@
           </div>
         </div>
         <section class="welcome-banner" aria-labelledby="welcomeTitle">
-          <img th:src="@{/img/dashboard-waves.svg}" alt="" />
           <div class="welcome-copy">
             <h2 id="welcomeTitle">Tienes 4 atenciones en tu agenda.</h2>
           </div>
+          <img
+            class="welcome-illustration"
+            th:src="@{/img/dashboard-agenda.svg}"
+            width="600"
+            height="320"
+            alt=""
+          />
         </section>
         <section class="row g-3 mb-4" aria-label="Indicadores de demostración">
-          <div class="col-6 col-xl-3">
+          <div class="col-6">
             <article class="stat-card">
               <div class="stat-top">
                 <span class="stat-number">248</span
@@ -28,22 +34,9 @@
                 ></span>
               </div>
               <p class="stat-label">Clientes registrados</p>
-              <div class="stat-change"><strong>+18</strong>este mes</div>
             </article>
           </div>
-          <div class="col-6 col-xl-3">
-            <article class="stat-card">
-              <div class="stat-top">
-                <span class="stat-number">86</span
-                ><span class="stat-icon"
-                  ><i class="bi bi-calendar2-heart" aria-hidden="true"></i
-                ></span>
-              </div>
-              <p class="stat-label">Atenciones este mes</p>
-              <div class="stat-change"><strong>+12%</strong>vs. agosto</div>
-            </article>
-          </div>
-          <div class="col-6 col-xl-3">
+          <div class="col-6">
             <article class="stat-card">
               <div class="stat-top">
                 <span class="stat-number">54</span
@@ -52,24 +45,11 @@
                 ></span>
               </div>
               <p class="stat-label">Diagnósticos realizados</p>
-              <div class="stat-change"><strong>+8</strong>este mes</div>
-            </article>
-          </div>
-          <div class="col-6 col-xl-3">
-            <article class="stat-card">
-              <div class="stat-top">
-                <span class="stat-number">12</span
-                ><span class="stat-icon"
-                  ><i class="bi bi-clock-history" aria-hidden="true"></i
-                ></span>
-              </div>
-              <p class="stat-label">Seguimientos pendientes</p>
-              <div class="stat-change"><strong>4</strong>esta semana</div>
             </article>
           </div>
         </section>
         <div class="row g-4">
-          <div class="col-12 col-xl-7">
+          <div class="col-12">
             <section class="panel h-100">
               <div class="panel-header">
                 <div>
@@ -117,55 +97,10 @@
               </div>
             </section>
           </div>
-          <div class="col-12 col-xl-5">
-            <section class="panel h-100">
-              <div class="panel-header">
-                <div>
-                  <h2>Atenciones mensuales</h2>
-                  <p>Abril a septiembre de 2026</p>
-                </div>
-                <i class="bi bi-bar-chart" aria-hidden="true"></i>
-              </div>
-              <div
-                class="bar-chart"
-                role="img"
-                aria-label="Atenciones: abril 44, mayo 58, junio 65, julio 61, agosto 77, septiembre 86"
-              >
-                <div class="bar-column">
-                  <div class="bar" style="--value: 44%"><span>44</span></div>
-                  <small>Abr</small>
-                </div>
-                <div class="bar-column">
-                  <div class="bar" style="--value: 58%"><span>58</span></div>
-                  <small>May</small>
-                </div>
-                <div class="bar-column">
-                  <div class="bar" style="--value: 65%"><span>65</span></div>
-                  <small>Jun</small>
-                </div>
-                <div class="bar-column">
-                  <div class="bar" style="--value: 61%"><span>61</span></div>
-                  <small>Jul</small>
-                </div>
-                <div class="bar-column">
-                  <div class="bar" style="--value: 77%"><span>77</span></div>
-                  <small>Ago</small>
-                </div>
-                <div class="bar-column">
-                  <div class="bar" style="--value: 86%"><span>86</span></div>
-                  <small>Sep</small>
-                </div>
-              </div>
-            </section>
-          </div>
           <div class="col-12 col-xl-7">
             <section class="panel h-100">
               <div class="panel-header">
                 <h2>Clientes recientes</h2>
-                <a class="text-link" th:href="@{/clientes}"
-                  >Ver todos
-                  <i class="bi bi-arrow-up-right" aria-hidden="true"></i
-                ></a>
               </div>
               <div class="recent-list">
                 <a class="recent-client" th:href="@{/clientes/perfil}"

@@ -1,4 +1,3 @@
-/* Paleta de Zamba: borgoña, pomelo, crema y beige; oliva como apoyo. */
 :root {
   --primary: #73001f;
   --secondary: #9f3946;
@@ -177,7 +176,6 @@ textarea {
   color: var(--primary);
 }
 
-/* Estructura compartida y navegación. */
 .sidebar {
   --bs-offcanvas-width: var(--sidebar-width);
   background: #fffdfa !important;
@@ -601,7 +599,6 @@ textarea {
   margin-left: 8px;
 }
 
-/* Bienvenida y resumen de la jornada. */
 .date-chip {
   border: 1px solid var(--border);
   border-radius: 8px;
@@ -613,30 +610,26 @@ textarea {
 }
 .welcome-banner {
   min-height: 215px;
-  position: relative;
   overflow: hidden;
   border-radius: 17px;
   background: #eae2d5;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
+  gap: 12px;
+  padding: 16px 30px;
   margin-bottom: 24px;
 }
-.welcome-banner > img {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  width: 54%;
-  object-fit: cover;
-  object-position: 65% 42%;
+.welcome-illustration {
+  display: block;
+  width: 100%;
+  max-width: 440px;
+  height: 190px;
+  object-fit: contain;
+  justify-self: end;
 }
 .welcome-copy {
-  position: relative;
-  z-index: 1;
-  width: 58%;
-  padding: 30px;
-  background: #eae2d5;
-  border-radius: 0 90px 90px 0;
+  min-width: 0;
 }
 .welcome-copy h2 {
   font-family: "Lora", Georgia, serif;
@@ -847,7 +840,6 @@ textarea {
   margin: 12px 0 0;
 }
 
-/* Listados, búsqueda y filtros. */
 .filter-toolbar {
   display: flex;
   justify-content: space-between;
@@ -969,7 +961,6 @@ textarea {
   color: #a6988d;
 }
 
-/* Formularios y ficha capilar. */
 .form-section + .form-section {
   border-top: 1px solid var(--border);
   padding-top: 27px;
@@ -1348,7 +1339,6 @@ legend {
   color: var(--text-secondary);
 }
 
-/* Historial, evolución y rutina. */
 .timeline {
   position: relative;
   padding-left: 34px;
@@ -1570,7 +1560,6 @@ legend {
   color: var(--accent);
 }
 
-/* Catálogo de demostración. */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1697,7 +1686,6 @@ legend {
   font-size: 0.8rem;
 }
 
-/* Modales, avisos y acceso visual. */
 .modal {
   --bs-modal-border-radius: 17px;
   --bs-modal-border-width: 0;
@@ -1906,7 +1894,6 @@ legend {
   right: 20px;
 }
 
-/* Puntos de quiebre y preferencias de accesibilidad. */
 @media (min-width: 992px) {
   .sidebar {
     position: fixed;
@@ -1972,9 +1959,6 @@ legend {
   }
   .staff-button {
     padding-left: 12px;
-  }
-  .welcome-copy {
-    width: 65%;
   }
   .welcome-copy h2 {
     font-size: 1.4rem;
@@ -2071,11 +2055,8 @@ legend {
   }
   .welcome-banner {
     min-height: 190px;
-  }
-  .welcome-copy {
-    padding: 22px;
-    width: 68%;
-    border-radius: 0 55px 55px 0;
+    padding: 18px 22px;
+    gap: 8px;
   }
   .welcome-copy h2 {
     font-size: 1.25rem;
@@ -2083,9 +2064,8 @@ legend {
   .welcome-copy p {
     font-size: 0.7rem;
   }
-  .welcome-banner > img {
-    width: 57%;
-    object-position: 74% center;
+  .welcome-illustration {
+    height: 160px;
   }
   .date-chip {
     font-size: 0.66rem;
@@ -2241,16 +2221,27 @@ legend {
     bottom: 13px;
   }
 }
+@media (max-width: 575.98px) {
+  .welcome-banner {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+    padding: 20px 22px 10px;
+    gap: 4px;
+  }
+  .welcome-copy h2 {
+    max-width: 24ch;
+  }
+  .welcome-illustration {
+    max-width: 280px;
+    height: 145px;
+  }
+}
 @media (max-width: 399.98px) {
   .heading-actions {
     width: 100%;
   }
   .heading-actions .btn {
     flex: 1;
-  }
-  .welcome-copy {
-    width: 76%;
-    padding: 18px;
   }
   .welcome-copy h2 {
     font-size: 1.15rem;

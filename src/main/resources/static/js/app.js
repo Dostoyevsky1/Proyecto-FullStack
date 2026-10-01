@@ -18,7 +18,13 @@
     button.addEventListener("click", () => showToast(button.dataset.toast));
   });
 
-  // Los formularios validan en el navegador; no envían ni almacenan información.
+  const readNotificationsButton = document.querySelector("[data-mark-notifications-read]");
+  readNotificationsButton?.addEventListener("click", () => {
+    const dot = document.querySelector(".notification-dot");
+    if (dot) dot.hidden = true;
+    readNotificationsButton.disabled = true;
+  });
+
   document.querySelectorAll("form[data-demo-form]").forEach((form) => {
     form.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -62,7 +68,6 @@
       : "bi bi-eye";
   });
 
-  // Los filtros actúan solo sobre los elementos ficticios escritos en el HTML.
   document.querySelectorAll("[data-filter-scope]").forEach((scope) => {
     let category = "todos";
     const search = scope.querySelector("[data-filter-search]");
@@ -190,7 +195,6 @@
         bootstrap.Modal.getOrCreateInstance(dialog).show(button);
       };
 
-      // En móvil se muestra una sola ventana flotante a la vez.
       if (menuIsOpen) {
         sidebar.addEventListener("hidden.bs.offcanvas", openDialog, { once: true });
         bootstrap.Offcanvas.getOrCreateInstance(sidebar).hide();

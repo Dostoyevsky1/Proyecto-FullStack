@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="320" viewBox="0 0 600 320" fill="none">
+  <ellipse cx="306" cy="278" rx="206" ry="13" fill="#927963" opacity=".08"/>
+
+  <g stroke="#768059" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M459 216C487 171 510 123 497 76C492 59 484 44 473 32" stroke-width="2.2"/>
+    <g fill="#939D7C" stroke-width="1.2">
+      <path d="M473 32C462 32 455 17 458 8C470 12 480 21 473 32Z"/>
+      <path d="M490 59C467 59 451 47 450 31C470 34 486 43 490 59Z"/>
+      <path d="M496 77C495 55 508 40 524 35C524 54 511 71 496 77Z"/>
+      <path d="M500 101C480 94 466 82 468 65C484 71 497 85 500 101Z"/>
+      <path d="M498 119C505 97 524 88 540 91C533 108 516 119 498 119Z"/>
+      <path d="M491 145C474 135 465 120 469 106C486 116 492 129 491 145Z"/>
+      <path d="M481 170C496 148 514 145 528 150C515 166 500 174 481 170Z"/>
+      <path d="M471 192C455 179 451 162 458 147C470 158 476 175 471 192Z"/>
+    </g>
+    <g fill="#727B52" stroke="none">
+      <ellipse cx="505" cy="137" rx="5" ry="7" transform="rotate(24 505 137)"/>
+      <ellipse cx="480" cy="89" rx="4" ry="6" transform="rotate(-22 480 89)"/>
+    </g>
+  </g>
+
+  <g transform="rotate(-7 267 167)" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M81 71C145 51 218 50 270 78C317 54 388 58 446 79V263C376 246 322 248 271 271C217 244 151 241 81 254Z" fill="#927963" opacity=".12" transform="translate(3 6)"/>
+    <path d="M81 67C145 47 218 46 270 74C317 50 388 54 446 75V259C376 242 322 244 271 267C217 240 151 237 81 250Z" fill="#727B52" stroke="#626B47" stroke-width="2"/>
+    <path d="M89 67C155 47 219 48 270 77C321 52 383 57 438 74V250C371 233 319 237 271 258C216 231 155 232 89 241Z" fill="#DDD4BF" stroke="#B3AB93" stroke-width="1.5"/>
+    <path d="M97 59C160 43 221 50 270 77V251C217 224 158 224 97 234Z" fill="#FFFAF1" stroke="#B4A28C" stroke-width="1.6"/>
+    <path d="M270 77C319 52 381 57 432 72V242C367 226 317 228 270 251Z" fill="#F7F0E3" stroke="#B4A28C" stroke-width="1.6"/>
+    <path d="M270 78C266 134 266 198 270 250" stroke="#C5B59C" stroke-width="2"/>
+    <path d="M260 75C255 135 255 194 260 243M279 74C275 133 275 195 279 245" stroke="#E4D9C6" stroke-width="1.2"/>
+    <path d="M286 242V279L295 272L304 277V237" fill="#8F4A50"/>
+
+    <text x="120" y="89" fill="#725B46" font-family="Georgia, serif" font-size="20" font-style="italic">Hoy</text>
+    <path d="M121 101C159 98 203 103 237 115" stroke="#DBCFBD" stroke-width="1.2"/>
+    <g stroke="#89916E" stroke-width="1.4">
+      <rect x="122" y="116" width="12" height="12" rx="3" fill="#EDF0E6"/>
+      <rect x="122" y="143" width="12" height="12" rx="3" fill="#EDF0E6"/>
+      <rect x="122" y="170" width="12" height="12" rx="3" fill="#FFFAF1"/>
+      <rect x="122" y="197" width="12" height="12" rx="3" fill="#EDF0E6"/>
+      <path d="M125 122L128 125L132 119M125 149L128 152L132 146M125 203L128 206L132 200"/>
+    </g>
+    <g fill="#816C56" font-family="Arial, sans-serif" font-size="10">
+      <text x="146" y="125">09:00</text>
+      <text x="146" y="152">10:30</text>
+      <text x="146" y="179">12:00</text>
+      <text x="146" y="206">15:00</text>
+    </g>
+    <g stroke="#C9BCA6" stroke-width="2">
+      <path d="M182 123L229 128M182 150L219 153M182 177L231 181M182 204L222 208"/>
+    </g>
+
+    <text x="296" y="91" fill="#725B46" font-family="Georgia, serif" font-size="17" font-style="italic">Notas</text>
+    <g stroke="#D7CBB8" stroke-width="1.2">
+      <path d="M294 111C331 101 372 105 408 113M294 132C331 122 372 126 408 134M294 153C331 143 372 147 408 155M294 174C331 164 372 168 408 176M294 195C331 185 372 189 408 197M294 216C323 208 345 208 365 210"/>
+    </g>
+    <path d="M303 126C318 116 335 118 350 122M303 146C320 138 338 140 369 146" stroke="#A9AA8A" stroke-width="2"/>
+  </g>
+
+  <g transform="rotate(-19 431 241)" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#8F7052" stroke-width="13">
+      <path d="M364 222V269M386 222V271M408 222V272M430 222V272M452 222V271M474 222V269M496 222V266"/>
+    </g>
+    <g stroke="#BE9C76" stroke-width="10">
+      <path d="M364 222V269M386 222V271M408 222V272M430 222V272M452 222V271M474 222V269M496 222V266"/>
+    </g>
+    <rect x="357" y="204" width="147" height="25" rx="11" fill="#BE9C76" stroke="#8F7052" stroke-width="1.5"/>
+    <path d="M370 212H490" stroke="#D8BB98" stroke-width="1.5"/>
+    <path d="M391 220C417 217 443 218 467 220" stroke="#A88764" stroke-width="1.2"/>
+  </g>
+</svg>
