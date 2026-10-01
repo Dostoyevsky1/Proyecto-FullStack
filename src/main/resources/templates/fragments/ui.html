@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <div th:fragment="client" class="client-context">
+      <a class="d-flex align-items-center gap-3" th:href="@{/clientes/perfil}"
+        ><span class="avatar avatar-olive" aria-hidden="true">VM</span
+        ><span
+          ><strong>Valeria Mendoza</strong
+          ><small>27 años · Cliente desde marzo 2025</small></span
+        ></a
+      >
+      <div class="d-flex flex-wrap gap-2">
+        <span class="pill">Rizado 3B</span
+        ><span class="pill pill-olive">Porosidad alta</span>
+      </div>
+    </div>
+    <footer th:fragment="footer" class="page-footer"></footer>
+    <th:block th:fragment="toast">
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div
+          id="appToast"
+          class="toast"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <div class="d-flex">
+            <div class="toast-body">
+              <i class="bi bi-check-circle me-2" aria-hidden="true"></i
+              ><span id="toastMessage">Datos preparados correctamente.</span>
+            </div>
+            <button
+              type="button"
+              class="btn-close me-3 m-auto"
+              data-bs-dismiss="toast"
+              aria-label="Cerrar aviso"
+            ></button>
+          </div>
+        </div>
+      </div>
+    </th:block>
+    <th:block th:fragment="dialogs">
+      <div th:replace="~{fragments/ui :: toast}"></div>
+      <div
+        class="modal fade"
+        id="logoutModal"
+        tabindex="-1"
+        aria-labelledby="logoutTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title fs-5" id="logoutTitle">
+                ¿Terminamos por ahora?
+              </h2>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Cerrar"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <span class="modal-symbol"
+                ><i class="bi bi-box-arrow-right" aria-hidden="true"></i
+              ></span>
+              <p>Volverás a la pantalla de bienvenida de ZambaCare.</p>
+              <p class="text-muted small">
+                Este cierre es una simulación visual; no hay una sesión activa.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-light"
+                data-bs-dismiss="modal"
+              >
+                Seguir aquí</button
+              ><a class="btn btn-primary" th:href="@{/}">Cerrar sesión</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="staffModal"
+        tabindex="-1"
+        aria-labelledby="staffTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title fs-5" id="staffTitle">Mi perfil</h2>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Cerrar"
+              ></button>
+            </div>
+            <div class="modal-body text-center">
+               <span class="avatar avatar-staff avatar-lg mx-auto mb-3">AS</span>
+               <h3>Andrea Salazar</h3>
+               <p>Especialista</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Entendido
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </th:block>
+  </body>
+</html>

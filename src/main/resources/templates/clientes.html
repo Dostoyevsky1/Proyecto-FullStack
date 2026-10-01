@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Clientes')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/sidebar :: sidebar('clientes')}"></aside>
+    <div class="app-main">
+      <header th:replace="~{fragments/navbar :: navbar('Clientes')}"></header>
+      <main class="page-content" id="contenido">
+        <div class="page-heading">
+          <div>
+            <h1>Clientes</h1>
+            <p>Gestiona y consulta la información capilar de tus clientes.</p>
+          </div>
+          <div class="heading-actions">
+            <a class="btn btn-primary" th:href="@{/clientes/nuevo}"
+              ><i class="bi bi-plus-lg" aria-hidden="true"></i>Nuevo cliente</a
+            >
+          </div>
+        </div>
+        <section
+          class="panel"
+          data-filter-scope
+          aria-label="Directorio de clientes"
+        >
+          <div class="filter-toolbar">
+            <div class="search-field">
+              <i class="bi bi-search" aria-hidden="true"></i
+              ><label class="visually-hidden" for="clientSearch"
+                >Buscar cliente</label
+              ><input
+                class="form-control"
+                type="search"
+                id="clientSearch"
+                placeholder="Buscar por nombre o tipo de cabello…"
+                data-filter-search
+              />
+            </div>
+          </div>
+          <div class="filter-toolbar">
+            <div
+              class="filter-group"
+              role="group"
+              aria-label="Filtrar resultados"
+            >
+              <button
+                type="button"
+                class="filter-button active"
+                data-filter="todos"
+                aria-pressed="true"
+              >
+                Todos</button
+              ><button
+                type="button"
+                class="filter-button"
+                data-filter="ondulado"
+                aria-pressed="false"
+              >
+                Ondulado</button
+              ><button
+                type="button"
+                class="filter-button"
+                data-filter="rizado"
+                aria-pressed="false"
+              >
+                Rizado</button
+              ><button
+                type="button"
+                class="filter-button"
+                data-filter="afro"
+                aria-pressed="false"
+              >
+                Afro</button
+              ><button
+                type="button"
+                class="filter-button"
+                data-filter="liso"
+                aria-pressed="false"
+              >
+                Liso
+              </button>
+            </div>
+          </div>
+          <div
+            class="table-responsive"
+            tabindex="0"
+            role="region"
+            aria-label="Tabla de clientes, desplazable horizontalmente"
+          >
+            <table class="table clients-table">
+              <caption class="visually-hidden">
+                Ocho clientes ficticios. Los perfiles abren la ficha de ejemplo
+                de Valeria Mendoza.
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">
+                    <span class="visually-hidden">Avatar</span>
+                  </th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Teléfono</th>
+                  <th scope="col">Tipo de cabello</th>
+                  <th scope="col">Porosidad</th>
+                  <th scope="col">Última visita</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  data-filter-item
+                  data-category="rizado"
+                  data-search="Valeria Mendoza valeria.mendoza@ejemplo.com 900 000 001 3B"
+                >
+                  <td>
+                    <span class="avatar avatar-olive" aria-hidden="true"
+                      >VM</span
+                    >
+                  </td>
+                  <td>
+                    <a class="table-person" th:href="@{/clientes/perfil}"
+                      ><span
+                        ><strong class="client-name">Valeria Mendoza</strong
+                        ><small>valeria.mendoza@ejemplo.com</small></span
+                      ></a
+                    >
+                  </td>
+                  <td class="client-phone text-nowrap">900 000 001</td>
+                  <td>
+                    <span class="pill pill-neutral">3B</span>
+                    <small>Rizado</small>
+                  </td>
+                  <td>Alta</td>
+                  <td class="text-nowrap">18/09/2026</td>
+                  <td>
+                    <span class="pill pill-olive"
+                      ><span class="status-dot"></span>Seguimiento</span
+                    >
+                  </td>
+                  <td>
+                    <div class="row-actions">
+                      <a
+                        class="icon-button"
+                        th:href="@{/clientes/perfil}"
+                        aria-label="Ver perfil de Valeria Mendoza"
+                        title="Ver ficha de demostración"
+                        ><i class="bi bi-eye" aria-hidden="true"></i></a
+                      ><button
+                        class="icon-button"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editClientModal"
+                        aria-label="Editar Valeria Mendoza"
+                        title="Editar"
+                      >
+                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                      </button>
+                      <div class="dropdown">
+                        <button
+                          class="icon-button"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-label="Más opciones de Valeria Mendoza"
+                          aria-expanded="false"
+                        >
+                          <i class="bi bi-three-dots" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <a class="dropdown-item" th:href="@{/historial}"
+                              ><i
+                                class="bi bi-clock-history"
+                                aria-hidden="true"
+                              ></i>
+                              Ver historial de ejemplo</a
+                            >
+                          </li>
+                          <li>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              data-toast="Ficha preparada correctamente. Acción simulada."
+                            >
+                              <i
+                                class="bi bi-file-earmark-check"
+                                aria-hidden="true"
+                              ></i>
+                              Preparar ficha
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  data-filter-item
+                  data-category="ondulado"
+                  data-search="Camila Torres camila.torres@ejemplo.com 900 000 002 2C"
+                >
+                  <td>
+                    <span class="avatar avatar-lilac" aria-hidden="true"
+                      >CT</span
+                    >
+                  </td>
+                  <td>
+                    <a class="table-person" th:href="@{/clientes/perfil}"
+                      ><span
+                        ><strong class="client-name">Camila Torres</strong
+                        ><small>camila.torres@ejemplo.com</small></span
+                      ></a
+                    >
+                  </td>
+                  <td class="client-phone text-nowrap">900 000 002</td>
+                  <td>
+                    <span class="pill pill-neutral">2C</span>
+                    <small>Ondulado</small>
+                  </td>
+                  <td>Media</td>
+                  <td class="text-nowrap">21/09/2026</td>
+                  <td>
+                    <span class="pill pill-neutral"
+                      ><span class="status-dot"></span>Activa</span
+                    >
+                  </td>
+                  <td>
+                    <div class="row-actions">
+                      <a
+                        class="icon-button"
+                        th:href="@{/clientes/perfil}"
+                        aria-label="Ver perfil de Camila Torres"
+                        title="Ver ficha de demostración"
+                        ><i class="bi bi-eye" aria-hidden="true"></i></a
+                      ><button
+                        class="icon-button"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editClientModal"
+                        aria-label="Editar Camila Torres"
+                        title="Editar"
+                      >
+                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                      </button>
+                      <div class="dropdown">
+                        <button
+                          class="icon-button"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-label="Más opciones de Camila Torres"
+                          aria-expanded="false"
+                        >
+                          <i class="bi bi-three-dots" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <a class="dropdown-item" th:href="@{/historial}"
+                              ><i
+                                class="bi bi-clock-history"
+                                aria-hidden="true"
+                              ></i>
+                              Ver historial de ejemplo</a
+                            >
+                          </li>
+                          <li>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              data-toast="Ficha preparada correctamente. Acción simulada."
+                            >
+                              <i
+                                class="bi bi-file-earmark-check"
+                                aria-hidden="true"
+                              ></i>
+                              Preparar ficha
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  data-filter-item
+                  data-category="afro"
+                  data-search="Daniela Ramos daniela.ramos@ejemplo.com 900 000 003 4A"
+                >
+                  <td>
+                    <span class="avatar avatar-staff" aria-hidden="true"
+                      >DR</span
+                    >
+                  </td>
+                  <td>
+                    <a class="table-person" th:href="@{/clientes/perfil}"
+                      ><span
+                        ><strong class="client-name">Daniela Ramos</strong
+                        ><small>daniela.ramos@ejemplo.com</small></span
+                      ></a
+                    >
+                  </td>
+                  <td class="client-phone text-nowrap">900 000 003</td>
+                  <td>
+                    <span class="pill pill-neutral">4A</span>
+                    <small>Afro</small>
+                  </td>
+                  <td>Alta</td>
+                  <td class="text-nowrap">20/09/2026</td>
+                  <td>
+                    <span class="pill pill-olive"
+                      ><span class="status-dot"></span>Seguimiento</span
+                    >
+                  </td>
+                  <td>
+                    <div class="row-actions">
+                      <a
+                        class="icon-button"
+                        th:href="@{/clientes/perfil}"
+                        aria-label="Ver perfil de Daniela Ramos"
+                        title="Ver ficha de demostración"
+                        ><i class="bi bi-eye" aria-hidden="true"></i></a
+                      ><button
+                        class="icon-button"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editClientModal"
+                        aria-label="Editar Daniela Ramos"
+                        title="Editar"
+                      >
+                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                      </button>
+                      <div class="dropdown">
+                        <button
+                          class="icon-button"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-label="Más opciones de Daniela Ramos"
+                          aria-expanded="false"
+                        >
+                          <i class="bi bi-three-dots" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <a class="dropdown-item" th:href="@{/historial}"
+                              ><i
+                                class="bi bi-clock-history"
+                                aria-hidden="true"
+                              ></i>
+                              Ver historial de ejemplo</a
+                            >
+                          </li>
+                          <li>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              data-toast="Ficha preparada correctamente. Acción simulada."
+                            >
+                              <i
+                                class="bi bi-file-earmark-check"
+                                aria-hidden="true"
+                              ></i>
+                              Preparar ficha
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  data-filter-item
+                  data-category="rizado"
+                  data-search="Lucía Fernández lucia.fernandez@ejemplo.com 900 000 004 3A"
+                >
+                  <td>
+                    <span class="avatar avatar-rose" aria-hidden="true"
+                      >LF</span
+                    >
+                  </td>
+                  <td>
+                    <a class="table-person" th:href="@{/clientes/perfil}"
+                      ><span
+                        ><strong class="client-name">Lucía Fernández</strong
+                        ><small>lucia.fernandez@ejemplo.com</small></span
+                      ></a
+                    >
+                  </td>
+                  <td class="client-phone text-nowrap">900 000 004</td>
+                  <td>
+                    <span class="pill pill-neutral">3A</span>
+                    <small>Rizado</small>
+                  </td>
+                  <td>Media</td>
+                  <td class="text-nowrap">19/09/2026</td>
+                  <td>
+                    <span class="pill pill-neutral"
+                      ><span class="status-dot"></span>Activa</span
+                    >
+                  </td>
+                  <td>
+                    <div class="row-actions">
+                      <a
+                        class="icon-button"
+                        th:href="@{/clientes/perfil}"
+                        aria-label="Ver perfil de Lucía Fernández"
+                        title="Ver ficha de demostración"
+                        ><i class="bi bi-eye" aria-hidden="true"></i></a
+                      ><button
+                        class="icon-button"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editClientModal"
+                        aria-label="Editar Lucía Fernández"
+                        title="Editar"
+                      >
+                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                      </button>
+                      <div class="dropdown">
+                        <button
+                          class="icon-button"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-label="Más opciones de Lucía Fernández"
+                          aria-expanded="false"
+                        >
+                          <i class="bi bi-three-dots" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <a class="dropdown-item" th:href="@{/historial}"
+                              ><i
+                                class="bi bi-clock-history"
+                                aria-hidden="true"
+                              ></i>
+                              Ver historial de ejemplo</a
+                            >
+                          </li>
+                          <li>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              data-toast="Ficha preparada correctamente. Acción simulada."
+                            >
+                              <i
+                                class="bi bi-file-earmark-check"
+                                aria-hidden="true"
+                              ></i>
+                              Preparar ficha
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  data-filter-item
+                  data-category="ondulado"
+                  data-search="María Fernanda López maria.lopez@ejemplo.com 900 000 005 2B"
+                >
+                  <td><span class="avatar" aria-hidden="true">MF</span></td>
+                  <td>
+                    <a class="table-person" th:href="@{/clientes/perfil}"
+                      ><span
+                        ><strong class="client-name"
+                          >María Fernanda López</strong
+                        ><small>maria.lopez@ejemplo.com</small></span
+                      ></a
+                    >
+                  </td>
+                  <td class="client-phone text-nowrap">900 000 005</td>
+                  <td>
+                    <span class="pill pill-neutral">2B</span>
+                    <small>Ondulado</small>
+                  </td>
+                  <td>Baja</td>
+                  <td class="text-nowrap">15/09/2026</td>
+                  <td>
+                    <span class="pill pill-neutral"
+                      ><span class="status-dot"></span>Activa</span
+                    >
+                  </td>
+                  <td>
+                    <div class="row-actions">
+                      <a
+                        class="icon-button"
+                        th:href="@{/clientes/perfil}"
+                        aria-label="Ver perfil de María Fernanda López"
+                        title="Ver ficha de demostración"
+                        ><i class="bi bi-eye" aria-hidden="true"></i></a
+                      ><button
+                        class="icon-button"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editClientModal"
+                        aria-label="Editar María Fernanda López"
+                        title="Editar"
+                      >
+                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                      </button>
+                      <div class="dropdown">
+                        <button
+                          class="icon-button"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-label="Más opciones de María Fernanda López"
+                          aria-expanded="false"
+                        >
+                          <i class="bi bi-three-dots" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <a class="dropdown-item" th:href="@{/historial}"
+                              ><i
+                                class="bi bi-clock-history"
+                                aria-hidden="true"
+                              ></i>
+                              Ver historial de ejemplo</a
+                            >
+                          </li>
+                          <li>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              data-toast="Ficha preparada correctamente. Acción simulada."
+                            >
+                              <i
+                                class="bi bi-file-earmark-check"
+                                aria-hidden="true"
+                              ></i>
+                              Preparar ficha
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  data-filter-item
+                  data-category="rizado"
+                  data-search="Valeria Torres valeria.torres@ejemplo.com 900 000 006 3C"
+                >
+                  <td>
+                    <span class="avatar avatar-lilac" aria-hidden="true"
+                      >VT</span
+                    >
+                  </td>
+                  <td>
+                    <a class="table-person" th:href="@{/clientes/perfil}"
+                      ><span
+                        ><strong class="client-name">Valeria Torres</strong
+                        ><small>valeria.torres@ejemplo.com</small></span
+                      ></a
+                    >
+                  </td>
+                  <td class="client-phone text-nowrap">900 000 006</td>
+                  <td>
+                    <span class="pill pill-neutral">3C</span>
+                    <small>Rizado</small>
+                  </td>
+                  <td>Alta</td>
+                  <td class="text-nowrap">22/09/2026</td>
+                  <td>
+                    <span class="pill pill-neutral"
+                      ><span class="status-dot"></span>Activa</span
+                    >
+                  </td>
+                  <td>
+                    <div class="row-actions">
+                      <a
+                        class="icon-button"
+                        th:href="@{/clientes/perfil}"
+                        aria-label="Ver perfil de Valeria Torres"
+                        title="Ver ficha de demostración"
+                        ><i class="bi bi-eye" aria-hidden="true"></i></a
+                      ><button
+                        class="icon-button"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editClientModal"
+                        aria-label="Editar Valeria Torres"
+                        title="Editar"
+                      >
+                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                      </button>
+                      <div class="dropdown">
+                        <button
+                          class="icon-button"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-label="Más opciones de Valeria Torres"
+                          aria-expanded="false"
+                        >
+                          <i class="bi bi-three-dots" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <a class="dropdown-item" th:href="@{/historial}"
+                              ><i
+                                class="bi bi-clock-history"
+                                aria-hidden="true"
+                              ></i>
+                              Ver historial de ejemplo</a
+                            >
+                          </li>
+                          <li>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              data-toast="Ficha preparada correctamente. Acción simulada."
+                            >
+                              <i
+                                class="bi bi-file-earmark-check"
+                                aria-hidden="true"
+                              ></i>
+                              Preparar ficha
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  data-filter-item
+                  data-category="liso"
+                  data-search="Camila Mendoza camila.mendoza@ejemplo.com 900 000 007 1B"
+                >
+                  <td>
+                    <span class="avatar avatar-staff" aria-hidden="true"
+                      >CM</span
+                    >
+                  </td>
+                  <td>
+                    <a class="table-person" th:href="@{/clientes/perfil}"
+                      ><span
+                        ><strong class="client-name">Camila Mendoza</strong
+                        ><small>camila.mendoza@ejemplo.com</small></span
+                      ></a
+                    >
+                  </td>
+                  <td class="client-phone text-nowrap">900 000 007</td>
+                  <td>
+                    <span class="pill pill-neutral">1B</span>
+                    <small>Liso</small>
+                  </td>
+                  <td>Baja</td>
+                  <td class="text-nowrap">16/09/2026</td>
+                  <td>
+                    <span class="pill pill-olive"
+                      ><span class="status-dot"></span>Seguimiento</span
+                    >
+                  </td>
+                  <td>
+                    <div class="row-actions">
+                      <a
+                        class="icon-button"
+                        th:href="@{/clientes/perfil}"
+                        aria-label="Ver perfil de Camila Mendoza"
+                        title="Ver ficha de demostración"
+                        ><i class="bi bi-eye" aria-hidden="true"></i></a
+                      ><button
+                        class="icon-button"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editClientModal"
+                        aria-label="Editar Camila Mendoza"
+                        title="Editar"
+                      >
+                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                      </button>
+                      <div class="dropdown">
+                        <button
+                          class="icon-button"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-label="Más opciones de Camila Mendoza"
+                          aria-expanded="false"
+                        >
+                          <i class="bi bi-three-dots" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <a class="dropdown-item" th:href="@{/historial}"
+                              ><i
+                                class="bi bi-clock-history"
+                                aria-hidden="true"
+                              ></i>
+                              Ver historial de ejemplo</a
+                            >
+                          </li>
+                          <li>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              data-toast="Ficha preparada correctamente. Acción simulada."
+                            >
+                              <i
+                                class="bi bi-file-earmark-check"
+                                aria-hidden="true"
+                              ></i>
+                              Preparar ficha
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr
+                  data-filter-item
+                  data-category="afro"
+                  data-search="Lucía Ramírez lucia.ramirez@ejemplo.com 900 000 008 4B"
+                >
+                  <td>
+                    <span class="avatar avatar-rose" aria-hidden="true"
+                      >LR</span
+                    >
+                  </td>
+                  <td>
+                    <a class="table-person" th:href="@{/clientes/perfil}"
+                      ><span
+                        ><strong class="client-name">Lucía Ramírez</strong
+                        ><small>lucia.ramirez@ejemplo.com</small></span
+                      ></a
+                    >
+                  </td>
+                  <td class="client-phone text-nowrap">900 000 008</td>
+                  <td>
+                    <span class="pill pill-neutral">4B</span>
+                    <small>Afro</small>
+                  </td>
+                  <td>Media</td>
+                  <td class="text-nowrap">24/09/2026</td>
+                  <td>
+                    <span class="pill pill-neutral"
+                      ><span class="status-dot"></span>Activa</span
+                    >
+                  </td>
+                  <td>
+                    <div class="row-actions">
+                      <a
+                        class="icon-button"
+                        th:href="@{/clientes/perfil}"
+                        aria-label="Ver perfil de Lucía Ramírez"
+                        title="Ver ficha de demostración"
+                        ><i class="bi bi-eye" aria-hidden="true"></i></a
+                      ><button
+                        class="icon-button"
+                        type="button"
+                        data-bs-toggle="modal"
+                        data-bs-target="#editClientModal"
+                        aria-label="Editar Lucía Ramírez"
+                        title="Editar"
+                      >
+                        <i class="bi bi-pencil" aria-hidden="true"></i>
+                      </button>
+                      <div class="dropdown">
+                        <button
+                          class="icon-button"
+                          type="button"
+                          data-bs-toggle="dropdown"
+                          aria-label="Más opciones de Lucía Ramírez"
+                          aria-expanded="false"
+                        >
+                          <i class="bi bi-three-dots" aria-hidden="true"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                          <li>
+                            <a class="dropdown-item" th:href="@{/historial}"
+                              ><i
+                                class="bi bi-clock-history"
+                                aria-hidden="true"
+                              ></i>
+                              Ver historial de ejemplo</a
+                            >
+                          </li>
+                          <li>
+                            <button
+                              class="dropdown-item"
+                              type="button"
+                              data-toast="Ficha preparada correctamente. Acción simulada."
+                            >
+                              <i
+                                class="bi bi-file-earmark-check"
+                                aria-hidden="true"
+                              ></i>
+                              Preparar ficha
+                            </button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="empty-state" data-empty-state hidden>
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <p>No hay resultados con estos filtros.</p>
+            <button
+              type="button"
+              class="btn btn-light btn-sm"
+              data-reset-filters
+            >
+              Limpiar filtros
+            </button>
+          </div>
+          <div class="table-bottom">
+            <span class="results-count"
+              >Mostrando <strong data-result-count>8</strong> de 8 fichas</span
+            ><span class="pill pill-neutral">Página 1 de 1</span>
+          </div>
+        </section>
+        <footer th:replace="~{fragments/ui :: footer}"></footer>
+      </main>
+    </div>
+    <div
+      class="modal fade"
+      id="editClientModal"
+      tabindex="-1"
+      aria-labelledby="editClientTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="editClientTitle">
+              Editar cliente
+            </h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <form
+            data-demo-form="toast"
+            data-success-message="Edición simulada correctamente. Los datos originales se mantienen."
+            novalidate
+          >
+            <div class="modal-body">
+              <p class="text-muted small">
+                Prueba la edición visual de la ficha.
+              </p>
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label" for="editClientName"
+                    >Nombre completo
+                    <span class="required-marker" aria-hidden="true"
+                      >*</span
+                    ></label
+                  >
+                  <input
+                    class="form-control"
+                    id="editClientName"
+                    type="text"
+                    placeholder=""
+                    required
+                  />
+                  <div class="invalid-feedback">
+                    Revisa el campo nombre completo.
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="editClientPhone"
+                    >Teléfono
+                    <span class="required-marker" aria-hidden="true"
+                      >*</span
+                    ></label
+                  >
+                  <input
+                    class="form-control"
+                    id="editClientPhone"
+                    type="tel"
+                    placeholder=""
+                    required
+                    pattern="[0-9]{9}"
+                    maxlength="9"
+                  />
+                  <div class="invalid-feedback">Revisa el campo teléfono.</div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-light"
+                data-bs-dismiss="modal"
+              >
+                Cancelar</button
+              ><button type="submit" class="btn btn-primary">
+                Simular cambios
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
+  </body>
+</html>

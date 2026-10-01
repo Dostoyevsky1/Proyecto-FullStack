@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Perfil del cliente')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/sidebar :: sidebar('clientes')}"></aside>
+    <div class="app-main">
+      <header
+        th:replace="~{fragments/navbar :: navbar('Perfil del cliente')}"
+      ></header>
+      <main class="page-content" id="contenido">
+        <nav aria-label="Ruta de navegación">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a th:href="@{/clientes}">Clientes</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Perfil de Valeria
+            </li>
+          </ol>
+        </nav>
+        <section class="profile-hero" aria-labelledby="profileTitle">
+          <div class="profile-person">
+            <img
+              class="profile-photo"
+              th:src="@{/img/clientes/valeria.png}"
+              alt="Retrato ficticio de Valeria Mendoza"
+            />
+            <div>
+              <span class="pill pill-olive mb-2"
+                ><span class="status-dot"></span>En seguimiento</span
+              >
+              <h1 id="profileTitle">Valeria Mendoza</h1>
+              <p>27 años · Cliente desde marzo 2025</p>
+              <p>
+                <i class="bi bi-calendar3" aria-hidden="true"></i> Última
+                visita: 18/09/2026
+              </p>
+            </div>
+          </div>
+          <div class="heading-actions">
+            <a class="btn btn-primary" th:href="@{/diagnosticos/nuevo}"
+              ><i class="bi bi-plus-lg" aria-hidden="true"></i>Nuevo
+              diagnóstico</a
+            ><a class="btn btn-outline-primary" th:href="@{/tratamientos/nuevo}"
+              ><i class="bi bi-droplet" aria-hidden="true"></i>Registrar
+              tratamiento</a
+            >
+          </div>
+        </section>
+        <div class="hair-facts">
+          <div class="hair-fact">
+            <i class="bi bi-bezier2" aria-hidden="true"></i
+            ><small>Tipo de cabello</small><strong>3B</strong>
+          </div>
+          <div class="hair-fact">
+            <i class="bi bi-droplet" aria-hidden="true"></i
+            ><small>Porosidad</small><strong>Alta</strong>
+          </div>
+          <div class="hair-fact">
+            <i class="bi bi-flower3" aria-hidden="true"></i
+            ><small>Densidad</small><strong>Media</strong>
+          </div>
+          <div class="hair-fact">
+            <i class="bi bi-activity" aria-hidden="true"></i
+            ><small>Grosor</small><strong>Fino</strong>
+          </div>
+        </div>
+        <ul
+          class="nav nav-tabs profile-tabs"
+          id="profileTabs"
+          role="tablist"
+          aria-label="Secciones de la ficha de Valeria"
+        >
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="resumen-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#resumen-panel"
+              type="button"
+              role="tab"
+              aria-controls="resumen-panel"
+              aria-selected="true"
+            >
+              Resumen
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="diagnosticos-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#diagnosticos-panel"
+              type="button"
+              role="tab"
+              aria-controls="diagnosticos-panel"
+              aria-selected="false"
+            >
+              Diagnósticos
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="historial-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#historial-panel"
+              type="button"
+              role="tab"
+              aria-controls="historial-panel"
+              aria-selected="false"
+            >
+              Historial
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="evolucion-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#evolucion-panel"
+              type="button"
+              role="tab"
+              aria-controls="evolucion-panel"
+              aria-selected="false"
+            >
+              Evolución
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="rutina-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#rutina-panel"
+              type="button"
+              role="tab"
+              aria-controls="rutina-panel"
+              aria-selected="false"
+            >
+              Rutina
+            </button>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <section
+            class="tab-pane fade show active"
+            id="resumen-panel"
+            role="tabpanel"
+            aria-labelledby="resumen-tab"
+            tabindex="0"
+          >
+            <div class="row g-4">
+              <div class="col-12 col-xl-8">
+                <section class="panel mb-4">
+                  <div class="panel-header">
+                    <h2>Su cabello, hoy</h2>
+                    <span class="pill pill-sand">Deshidratación moderada</span>
+                  </div>
+                  <p class="text-muted">
+                    Rizos con tendencia a perder humedad en medios y puntas.
+                    Acompañamos su proceso con hidratación, definición suave y
+                    una rutina constante.
+                  </p>
+                  <div class="d-flex flex-wrap gap-2">
+                    <span class="pill pill-neutral">Rizado 3B</span
+                    ><span class="pill pill-neutral"
+                      >Cuero cabelludo normal</span
+                    ><span class="pill pill-neutral"
+                      >Sin alergias conocidas</span
+                    >
+                  </div>
+                </section>
+                <section class="panel mb-4">
+                  <div class="panel-header">
+                    <h2>Últimos servicios</h2>
+                    <a class="text-link" th:href="@{/historial}"
+                      >Ver historial
+                      <i class="bi bi-arrow-up-right" aria-hidden="true"></i
+                    ></a>
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <caption class="visually-hidden">
+                        Últimos servicios de Valeria Mendoza
+                      </caption>
+                      <thead>
+                        <tr>
+                          <th scope="col">Fecha</th>
+                          <th scope="col">Servicio</th>
+                          <th scope="col">Especialista</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td class="text-nowrap">18/09/2026</td>
+                          <td>Hidratación profunda</td>
+                          <td>Andrea Salazar</td>
+                        </tr>
+                        <tr>
+                          <td class="text-nowrap">02/08/2026</td>
+                          <td>Definición</td>
+                          <td>Andrea Salazar</td>
+                        </tr>
+                        <tr>
+                          <td class="text-nowrap">20/06/2026</td>
+                          <td>Corte de mantenimiento</td>
+                          <td>Andrea Salazar</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </section>
+                <section class="panel">
+                  <div class="panel-header">
+                    <h2>Observaciones del especialista</h2>
+                    <i class="bi bi-chat-square-heart" aria-hidden="true"></i>
+                  </div>
+                  <p class="specialist-note">
+                    Valeria busca mantener la definición sin perder volumen. Se
+                    observa porosidad alta y grosor fino. Priorizaremos
+                    productos ligeros y una rutina de hidratación sostenida.
+                  </p>
+                  <small class="text-muted"
+                    >Andrea Salazar · 18 de septiembre de 2026</small
+                  >
+                </section>
+              </div>
+              <div class="col-12 col-xl-4">
+                <section class="panel mb-4">
+                  <h2>Información de contacto</h2>
+                  <dl class="info-list mt-2">
+                    <div>
+                      <dt>Teléfono</dt>
+                      <dd>900 000 001</dd>
+                    </div>
+                    <div>
+                      <dt>Correo</dt>
+                      <dd class="text-break">valeria.mendoza@ejemplo.com</dd>
+                    </div>
+                    <div>
+                      <dt>Distrito</dt>
+                      <dd>Lince, Lima</dd>
+                    </div>
+                  </dl>
+                  <p class="text-muted small mb-0 mt-3">
+                    Datos ficticios de demostración.
+                  </p>
+                </section>
+                <section class="panel followup-card">
+                  <h2>Próximo seguimiento recomendado</h2>
+                  <time class="followup-date" datetime="2026-10-02"
+                    >02 octubre</time
+                  >
+                  <p class="small text-muted">
+                    Revisar hidratación, elasticidad y respuesta a la rutina.
+                  </p>
+                  <a class="btn btn-light" th:href="@{/seguimiento/evolucion}"
+                    ><i class="bi bi-graph-up-arrow" aria-hidden="true"></i>Ver
+                    evolución</a
+                  >
+                </section>
+              </div>
+            </div>
+          </section>
+          <section
+            class="tab-pane fade"
+            id="diagnosticos-panel"
+            role="tabpanel"
+            aria-labelledby="diagnosticos-tab"
+            tabindex="0"
+          >
+            <div class="panel">
+              <div class="panel-header">
+                <h2>Último diagnóstico capilar</h2>
+                <span class="pill pill-neutral">18/09/2026</span>
+              </div>
+              <p class="text-muted">
+                Cabello 3B, porosidad alta, densidad media y grosor fino.
+                Estado: deshidratación moderada.
+              </p>
+              <div class="d-flex flex-wrap gap-2 mb-4">
+                <span class="pill">Deshidratación</span
+                ><span class="pill">Frizz</span
+                ><span class="pill">Puntas secas</span>
+              </div>
+              <a
+                class="btn btn-outline-primary"
+                th:href="@{/diagnosticos/resultado}"
+                >Ver diagnóstico completo</a
+              >
+            </div>
+          </section>
+          <section
+            class="tab-pane fade"
+            id="historial-panel"
+            role="tabpanel"
+            aria-labelledby="historial-tab"
+            tabindex="0"
+          >
+            <div class="panel">
+              <div class="panel-header">
+                <h2>Últimos servicios</h2>
+                <span class="pill pill-neutral">4 registros</span>
+              </div>
+              <div class="table-responsive">
+                <table class="table">
+                  <caption class="visually-hidden">
+                    Últimos servicios de Valeria Mendoza
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Fecha</th>
+                      <th scope="col">Servicio</th>
+                      <th scope="col">Especialista</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="text-nowrap">18/09/2026</td>
+                      <td>Hidratación profunda</td>
+                      <td>Andrea Salazar</td>
+                    </tr>
+                    <tr>
+                      <td class="text-nowrap">02/08/2026</td>
+                      <td>Definición</td>
+                      <td>Andrea Salazar</td>
+                    </tr>
+                    <tr>
+                      <td class="text-nowrap">20/06/2026</td>
+                      <td>Corte de mantenimiento</td>
+                      <td>Andrea Salazar</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="mt-3">
+                <a class="btn btn-outline-primary" th:href="@{/historial}"
+                  ><i class="bi bi-clock-history" aria-hidden="true"></i>Abrir
+                  historial completo</a
+                >
+              </div>
+            </div>
+          </section>
+          <section
+            class="tab-pane fade"
+            id="evolucion-panel"
+            role="tabpanel"
+            aria-labelledby="evolucion-tab"
+            tabindex="0"
+          >
+            <div class="panel">
+              <div class="row g-4 align-items-center">
+                <div class="col-12 col-md-6">
+                  <img
+                    class="rounded-3 w-100"
+                    th:src="@{/img/clientes/septiembre.png}"
+                    alt="Comparación capilar ficticia, antes a la izquierda y después a la derecha"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="col-12 col-md-6">
+                  <h2>Su proceso, paso a paso</h2>
+                  <p class="text-muted mt-3">
+                    Consulta las comparaciones de enero, marzo, junio y
+                    septiembre y los indicadores de acompañamiento.
+                  </p>
+                  <a
+                    class="btn btn-outline-primary"
+                    th:href="@{/seguimiento/evolucion}"
+                    ><i class="bi bi-graph-up-arrow" aria-hidden="true"></i>Ver
+                    evolución capilar</a
+                  >
+                  <p class="small text-muted mt-3 mb-0">
+                    Fotografías generadas, únicamente ilustrativas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            class="tab-pane fade"
+            id="rutina-panel"
+            role="tabpanel"
+            aria-labelledby="rutina-tab"
+            tabindex="0"
+          >
+            <div class="panel">
+              <div class="panel-header">
+                <h2>Mi Rutina Zamba</h2>
+                <span class="pill pill-olive">Hidratación y definición</span>
+              </div>
+              <p class="text-muted">
+                Un plan semanal con lavado, hidratación, refresh y descanso.
+                Adaptado a la ficha de ejemplo de Valeria.
+              </p>
+              <a
+                class="btn btn-outline-primary"
+                th:href="@{/seguimiento/rutina}"
+                ><i class="bi bi-calendar2-week" aria-hidden="true"></i>Ver
+                rutina personalizada</a
+              >
+            </div>
+          </section>
+        </div>
+        <footer th:replace="~{fragments/ui :: footer}"></footer>
+      </main>
+    </div>
+
+    <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
+  </body>
+</html>

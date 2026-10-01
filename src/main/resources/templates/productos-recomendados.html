@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Productos recomendados')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/sidebar :: sidebar('productos')}"></aside>
+    <div class="app-main">
+      <header
+        th:replace="~{fragments/navbar :: navbar('Productos recomendados')}"
+      ></header>
+      <main class="page-content" id="contenido">
+        <div class="page-heading">
+          <div>
+            <h1>Productos recomendados</h1>
+          </div>
+          <div class="heading-actions"></div>
+        </div>
+        <div th:replace="~{fragments/ui :: client}"></div>
+        <section data-filter-scope aria-label="Catálogo ficticio de productos">
+          <div class="filter-toolbar">
+            <div
+              class="filter-group"
+              role="group"
+              aria-label="Filtrar resultados"
+            >
+              <button
+                type="button"
+                class="filter-button active"
+                data-filter="todos"
+                aria-pressed="true"
+              >
+                Todos</button
+              ><button
+                type="button"
+                class="filter-button"
+                data-filter="shampoo"
+                aria-pressed="false"
+              >
+                Shampoo</button
+              ><button
+                type="button"
+                class="filter-button"
+                data-filter="acondicionador"
+                aria-pressed="false"
+              >
+                Acondicionador</button
+              ><button
+                type="button"
+                class="filter-button"
+                data-filter="mascarilla"
+                aria-pressed="false"
+              >
+                Mascarilla</button
+              ><button
+                type="button"
+                class="filter-button"
+                data-filter="leave-in"
+                aria-pressed="false"
+              >
+                Leave-in</button
+              ><button
+                type="button"
+                class="filter-button"
+                data-filter="definicion"
+                aria-pressed="false"
+              >
+                Definición</button
+              ><button
+                type="button"
+                class="filter-button"
+                data-filter="aceites"
+                aria-pressed="false"
+              >
+                Aceites
+              </button>
+            </div>
+          </div>
+          <div class="filter-toolbar">
+            <div class="search-field">
+              <i class="bi bi-search" aria-hidden="true"></i
+              ><label class="visually-hidden" for="productSearch"
+                >Buscar producto</label
+              ><input
+                class="form-control"
+                type="search"
+                id="productSearch"
+                placeholder="Buscar un producto…"
+                data-filter-search
+              />
+            </div>
+            <span class="results-count" role="status" aria-live="polite"
+              ><strong data-result-count>8</strong> productos para
+              explorar</span
+            >
+          </div>
+          <div class="products-grid">
+            <article
+              class="product-card"
+              data-filter-item
+              data-category="shampoo"
+              data-search="Shampoo Limpieza suave Shampoo Limpia delicadamente y acompaña la hidratación."
+            >
+              <div class="product-photo">
+                <img
+                  th:src="@{/img/productos/shampoo.png}"
+                  alt="Fotografía de envase ficticio: Shampoo Limpieza suave"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-body">
+                <h2 class="product-name">Shampoo Limpieza suave</h2>
+                <span class="product-category">Shampoo</span>
+                <p class="product-benefit">
+                  Limpia delicadamente y acompaña la hidratación.
+                </p>
+                <div class="product-bottom">
+                  <span class="product-price">S/ 49.00</span
+                  ><button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#productModal"
+                    aria-label="Ver detalle de Shampoo Limpieza suave"
+                  >
+                    Ver detalle <i class="bi bi-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-details product-detail-text" hidden>
+                <h3>Descripción</h3>
+                <p>Limpieza suave para comenzar la rutina capilar.</p>
+                <h3>Modo de uso</h3>
+                <p>Masajear sobre el cuero cabelludo húmedo y enjuagar.</p>
+                <h3>Beneficio</h3>
+                <p>Limpia delicadamente y acompaña la hidratación.</p>
+                <h3>Recomendación del especialista</h3>
+                <p>Usar en el día de lavado de la rutina de ejemplo.</p>
+                <small class="text-muted"
+                  >Producto, precio y recomendación ficticios para la
+                  demostración.</small
+                >
+              </div>
+            </article>
+            <article
+              class="product-card"
+              data-filter-item
+              data-category="acondicionador"
+              data-search="Acondicionador Suavidad Acondicionador Facilita el desenredado y deja una sensación suave."
+            >
+              <div class="product-photo">
+                <img
+                  th:src="@{/img/productos/acondicionador.png}"
+                  alt="Fotografía de envase ficticio: Acondicionador Suavidad"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-body">
+                <h2 class="product-name">Acondicionador Suavidad</h2>
+                <span class="product-category">Acondicionador</span>
+                <p class="product-benefit">
+                  Facilita el desenredado y deja una sensación suave.
+                </p>
+                <div class="product-bottom">
+                  <span class="product-price">S/ 52.00</span
+                  ><button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#productModal"
+                    aria-label="Ver detalle de Acondicionador Suavidad"
+                  >
+                    Ver detalle <i class="bi bi-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-details product-detail-text" hidden>
+                <h3>Descripción</h3>
+                <p>Acondicionador de textura ligera para medios y puntas.</p>
+                <h3>Modo de uso</h3>
+                <p>Distribuir en medios y puntas, desenredar y enjuagar.</p>
+                <h3>Beneficio</h3>
+                <p>Facilita el desenredado y deja una sensación suave.</p>
+                <h3>Recomendación del especialista</h3>
+                <p>Desenredar por secciones, evitando tirones.</p>
+                <small class="text-muted"
+                  >Producto, precio y recomendación ficticios para la
+                  demostración.</small
+                >
+              </div>
+            </article>
+            <article
+              class="product-card"
+              data-filter-item
+              data-category="mascarilla"
+              data-search="Mascarilla Hidratación Mascarilla Un cuidado intenso para rizos que necesitan humedad."
+            >
+              <div class="product-photo">
+                <img
+                  th:src="@{/img/productos/mascarilla.png}"
+                  alt="Fotografía de envase ficticio: Mascarilla Hidratación"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-body">
+                <h2 class="product-name">Mascarilla Hidratación</h2>
+                <span class="product-category">Mascarilla</span>
+                <p class="product-benefit">
+                  Un cuidado intenso para rizos que necesitan humedad.
+                </p>
+                <div class="product-bottom">
+                  <span class="product-price">S/ 68.00</span
+                  ><button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#productModal"
+                    aria-label="Ver detalle de Mascarilla Hidratación"
+                  >
+                    Ver detalle <i class="bi bi-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-details product-detail-text" hidden>
+                <h3>Descripción</h3>
+                <p>Mascarilla hidratante de la línea ficticia Raíz.</p>
+                <h3>Modo de uso</h3>
+                <p>
+                  Aplicar después del lavado, dejar actuar y enjuagar según la
+                  rutina.
+                </p>
+                <h3>Beneficio</h3>
+                <p>Un cuidado intenso para rizos que necesitan humedad.</p>
+                <h3>Recomendación del especialista</h3>
+                <p>Acompañar el cuidado semanal de Valeria.</p>
+                <small class="text-muted"
+                  >Producto, precio y recomendación ficticios para la
+                  demostración.</small
+                >
+              </div>
+            </article>
+            <article
+              class="product-card"
+              data-filter-item
+              data-category="leave-in"
+              data-search="Leave-in Ligereza Leave-in Ayuda a conservar humedad sin sensación pesada."
+            >
+              <div class="product-photo">
+                <img
+                  th:src="@{/img/productos/leave-in.png}"
+                  alt="Fotografía de envase ficticio: Leave-in Ligereza"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-body">
+                <h2 class="product-name">Leave-in Ligereza</h2>
+                <span class="product-category">Leave-in</span>
+                <p class="product-benefit">
+                  Ayuda a conservar humedad sin sensación pesada.
+                </p>
+                <div class="product-bottom">
+                  <span class="product-price">S/ 58.00</span
+                  ><button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#productModal"
+                    aria-label="Ver detalle de Leave-in Ligereza"
+                  >
+                    Ver detalle <i class="bi bi-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-details product-detail-text" hidden>
+                <h3>Descripción</h3>
+                <p>Crema ligera sin enjuague para el peinado.</p>
+                <h3>Modo de uso</h3>
+                <p>
+                  Aplicar una pequeña cantidad sobre cabello húmedo, por
+                  secciones.
+                </p>
+                <h3>Beneficio</h3>
+                <p>Ayuda a conservar humedad sin sensación pesada.</p>
+                <h3>Recomendación del especialista</h3>
+                <p>Comenzar con poca cantidad en el cabello fino.</p>
+                <small class="text-muted"
+                  >Producto, precio y recomendación ficticios para la
+                  demostración.</small
+                >
+              </div>
+            </article>
+            <article
+              class="product-card"
+              data-filter-item
+              data-category="definicion"
+              data-search="Gel Definición Definición Acompaña la forma natural de cada rizo."
+            >
+              <div class="product-photo">
+                <img
+                  th:src="@{/img/productos/gel.png}"
+                  alt="Fotografía de envase ficticio: Gel Definición"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-body">
+                <h2 class="product-name">Gel Definición</h2>
+                <span class="product-category">Definición</span>
+                <p class="product-benefit">
+                  Acompaña la forma natural de cada rizo.
+                </p>
+                <div class="product-bottom">
+                  <span class="product-price">S/ 45.00</span
+                  ><button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#productModal"
+                    aria-label="Ver detalle de Gel Definición"
+                  >
+                    Ver detalle <i class="bi bi-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-details product-detail-text" hidden>
+                <h3>Descripción</h3>
+                <p>Gel de definición de acabado flexible.</p>
+                <h3>Modo de uso</h3>
+                <p>Distribuir sobre el cabello húmedo y definir suavemente.</p>
+                <h3>Beneficio</h3>
+                <p>Acompaña la forma natural de cada rizo.</p>
+                <h3>Recomendación del especialista</h3>
+                <p>Evitar manipular los rizos mientras se secan.</p>
+                <small class="text-muted"
+                  >Producto, precio y recomendación ficticios para la
+                  demostración.</small
+                >
+              </div>
+            </article>
+            <article
+              class="product-card"
+              data-filter-item
+              data-category="aceites"
+              data-search="Óleo nutritivo Aceites Aporta brillo y una sensación de suavidad en puntas."
+            >
+              <div class="product-photo">
+                <img
+                  th:src="@{/img/productos/aceite.png}"
+                  alt="Fotografía de envase ficticio: Óleo nutritivo"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-body">
+                <h2 class="product-name">Óleo nutritivo</h2>
+                <span class="product-category">Aceites</span>
+                <p class="product-benefit">
+                  Aporta brillo y una sensación de suavidad en puntas.
+                </p>
+                <div class="product-bottom">
+                  <span class="product-price">S/ 39.00</span
+                  ><button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#productModal"
+                    aria-label="Ver detalle de Óleo nutritivo"
+                  >
+                    Ver detalle <i class="bi bi-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-details product-detail-text" hidden>
+                <h3>Descripción</h3>
+                <p>Aceite de acabado de la colección ficticia Raíz.</p>
+                <h3>Modo de uso</h3>
+                <p>
+                  Distribuir unas gotas entre las manos y aplicar en puntas.
+                </p>
+                <h3>Beneficio</h3>
+                <p>Aporta brillo y una sensación de suavidad en puntas.</p>
+                <h3>Recomendación del especialista</h3>
+                <p>Usar una cantidad pequeña y ajustar según la sensación.</p>
+                <small class="text-muted"
+                  >Producto, precio y recomendación ficticios para la
+                  demostración.</small
+                >
+              </div>
+            </article>
+            <article
+              class="product-card"
+              data-filter-item
+              data-category="shampoo"
+              data-search="Shampoo Equilibrio Shampoo Limpieza amable para un cuero cabelludo confortable."
+            >
+              <div class="product-photo">
+                <img
+                  th:src="@{/img/productos/shampoo-equilibrio.png}"
+                  alt="Fotografía de envase ficticio: Shampoo Equilibrio"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-body">
+                <h2 class="product-name">Shampoo Equilibrio</h2>
+                <span class="product-category">Shampoo</span>
+                <p class="product-benefit">
+                  Limpieza amable para un cuero cabelludo confortable.
+                </p>
+                <div class="product-bottom">
+                  <span class="product-price">S/ 54.00</span
+                  ><button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#productModal"
+                    aria-label="Ver detalle de Shampoo Equilibrio"
+                  >
+                    Ver detalle <i class="bi bi-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-details product-detail-text" hidden>
+                <h3>Descripción</h3>
+                <p>Shampoo alternativo de cuidado suave.</p>
+                <h3>Modo de uso</h3>
+                <p>
+                  Aplicar sobre el cuero cabelludo húmedo y aclarar con agua.
+                </p>
+                <h3>Beneficio</h3>
+                <p>Limpieza amable para un cuero cabelludo confortable.</p>
+                <h3>Recomendación del especialista</h3>
+                <p>Consultar su incorporación durante el seguimiento.</p>
+                <small class="text-muted"
+                  >Producto, precio y recomendación ficticios para la
+                  demostración.</small
+                >
+              </div>
+            </article>
+            <article
+              class="product-card"
+              data-filter-item
+              data-category="mascarilla"
+              data-search="Mascarilla Hidratación intensiva Mascarilla Complementa el cuidado de medios y puntas secos."
+            >
+              <div class="product-photo">
+                <img
+                  th:src="@{/img/productos/mascarilla.png}"
+                  alt="Fotografía de envase ficticio: Mascarilla Hidratación intensiva"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-body">
+                <h2 class="product-name">Mascarilla Hidratación intensiva</h2>
+                <span class="product-category">Mascarilla</span>
+                <p class="product-benefit">
+                  Complementa el cuidado de medios y puntas secos.
+                </p>
+                <div class="product-bottom">
+                  <span class="product-price">S/ 74.00</span
+                  ><button
+                    type="button"
+                    class="btn btn-outline-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#productModal"
+                    aria-label="Ver detalle de Mascarilla Hidratación intensiva"
+                  >
+                    Ver detalle <i class="bi bi-plus" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="product-details product-detail-text" hidden>
+                <h3>Descripción</h3>
+                <p>Presentación intensiva de la línea ficticia Hidratación.</p>
+                <h3>Modo de uso</h3>
+                <p>
+                  Aplicar por secciones y enjuagar al finalizar el tiempo
+                  indicado en la rutina.
+                </p>
+                <h3>Beneficio</h3>
+                <p>Complementa el cuidado de medios y puntas secos.</p>
+                <h3>Recomendación del especialista</h3>
+                <p>Valorar su uso en la próxima atención de Valeria.</p>
+                <small class="text-muted"
+                  >Producto, precio y recomendación ficticios para la
+                  demostración.</small
+                >
+              </div>
+            </article>
+          </div>
+          <div class="empty-state" data-empty-state hidden>
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <p>No hay resultados con estos filtros.</p>
+            <button
+              type="button"
+              class="btn btn-light btn-sm"
+              data-reset-filters
+            >
+              Limpiar filtros
+            </button>
+          </div>
+        </section>
+        <footer th:replace="~{fragments/ui :: footer}"></footer>
+      </main>
+    </div>
+    <div
+      class="modal fade"
+      id="productModal"
+      tabindex="-1"
+      aria-labelledby="productModalTitle"
+      aria-hidden="true"
+    >
+      <div
+        class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"
+      >
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="productModalTitle">
+              Detalle del producto
+            </h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="row g-4">
+              <div class="col-12 col-md-5">
+                <img
+                  id="productModalImage"
+                  class="product-detail-photo"
+                  th:src="@{/img/productos/shampoo.png}"
+                  alt="Envase ficticio"
+                />
+                <span class="product-price" id="productModalPrice"></span>
+                <p class="small text-muted mt-2">Precio de demostración</p>
+              </div>
+              <div class="col-12 col-md-7" id="productModalDetails"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Volver a productos
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
+  </body>
+</html>

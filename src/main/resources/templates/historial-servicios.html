@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Historial de servicios')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/sidebar :: sidebar('tratamientos')}"></aside>
+    <div class="app-main">
+      <header
+        th:replace="~{fragments/navbar :: navbar('Historial de servicios')}"
+      ></header>
+      <main class="page-content" id="contenido">
+        <nav aria-label="Ruta de navegación">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a th:href="@{/clientes/perfil}">Perfil de Valeria</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Historial de servicios
+            </li>
+          </ol>
+        </nav>
+        <div class="page-heading">
+          <div>
+            <h1>Historial de servicios</h1>
+          </div>
+          <div class="heading-actions">
+            <a class="btn btn-primary" th:href="@{/tratamientos/nuevo}"
+              ><i class="bi bi-plus-lg" aria-hidden="true"></i>Registrar
+              tratamiento</a
+            >
+          </div>
+        </div>
+        <div th:replace="~{fragments/ui :: client}"></div>
+        <div class="row g-4">
+          <div class="col-12 col-lg-8">
+            <section data-filter-scope aria-label="Historial de Valeria">
+              <div class="filter-toolbar">
+                <div
+                  class="filter-group"
+                  role="group"
+                  aria-label="Filtrar resultados"
+                >
+                  <button
+                    type="button"
+                    class="filter-button active"
+                    data-filter="todos"
+                    aria-pressed="true"
+                  >
+                    Todos</button
+                  ><button
+                    type="button"
+                    class="filter-button"
+                    data-filter="tratamientos"
+                    aria-pressed="false"
+                  >
+                    Tratamientos</button
+                  ><button
+                    type="button"
+                    class="filter-button"
+                    data-filter="cortes"
+                    aria-pressed="false"
+                  >
+                    Cortes</button
+                  ><button
+                    type="button"
+                    class="filter-button"
+                    data-filter="diagnosticos"
+                    aria-pressed="false"
+                  >
+                    Diagnósticos
+                  </button>
+                </div>
+                <span class="results-count" role="status" aria-live="polite"
+                  ><span data-result-count>4</span> registros</span
+                >
+              </div>
+              <div class="timeline">
+                <article
+                  class="timeline-entry panel"
+                  data-filter-item
+                  data-category="tratamientos"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-3"
+                  >
+                    <time class="timeline-date" datetime="2026-09-18"
+                      >18 SEP 2026</time
+                    ><span class="pill pill-olive">Hidratación</span>
+                  </div>
+                  <h2>Hidratación profunda + definición</h2>
+                  <div class="timeline-meta">
+                    <span
+                      ><i class="bi bi-person" aria-hidden="true"></i> Andrea
+                      Salazar</span
+                    ><span
+                      ><i class="bi bi-clock" aria-hidden="true"></i> 90
+                      min</span
+                    >
+                  </div>
+                  <p>
+                    Se observó mejora en hidratación y mayor suavidad al tacto.
+                    Se reforzó la rutina de cuidado en casa.
+                  </p>
+                </article>
+                <article
+                  class="timeline-entry panel"
+                  data-filter-item
+                  data-category="tratamientos"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-3"
+                  >
+                    <time class="timeline-date" datetime="2026-08-02"
+                      >02 AGO 2026</time
+                    ><span class="pill pill-olive">Definición</span>
+                  </div>
+                  <h2>Definición</h2>
+                  <div class="timeline-meta">
+                    <span
+                      ><i class="bi bi-person" aria-hidden="true"></i> Andrea
+                      Salazar</span
+                    ><span
+                      ><i class="bi bi-clock" aria-hidden="true"></i> 60
+                      min</span
+                    >
+                  </div>
+                  <p>
+                    Definición por secciones respetando el volumen natural.
+                    Buena respuesta al leave-in ligero.
+                  </p>
+                </article>
+                <article
+                  class="timeline-entry panel"
+                  data-filter-item
+                  data-category="cortes"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-3"
+                  >
+                    <time class="timeline-date" datetime="2026-06-20"
+                      >20 JUN 2026</time
+                    ><span class="pill pill-olive">Mantenimiento</span>
+                  </div>
+                  <h2>Corte de mantenimiento</h2>
+                  <div class="timeline-meta">
+                    <span
+                      ><i class="bi bi-person" aria-hidden="true"></i> Andrea
+                      Salazar</span
+                    ><span
+                      ><i class="bi bi-clock" aria-hidden="true"></i> 45
+                      min</span
+                    >
+                  </div>
+                  <p>
+                    Se retiraron puntas secas y se mantuvo la forma del corte.
+                    Valeria prefiere conservar su largo.
+                  </p>
+                </article>
+                <article
+                  class="timeline-entry panel"
+                  data-filter-item
+                  data-category="diagnosticos"
+                >
+                  <div
+                    class="d-flex align-items-center justify-content-between gap-3"
+                  >
+                    <time class="timeline-date" datetime="2026-05-15"
+                      >15 MAY 2026</time
+                    ><span class="pill pill-olive">Diagnóstico</span>
+                  </div>
+                  <h2>Diagnóstico inicial</h2>
+                  <div class="timeline-meta">
+                    <span
+                      ><i class="bi bi-person" aria-hidden="true"></i> Andrea
+                      Salazar</span
+                    ><span
+                      ><i class="bi bi-clock" aria-hidden="true"></i> 40
+                      min</span
+                    >
+                  </div>
+                  <p>
+                    Se registró patrón 3B, porosidad alta, densidad media y
+                    grosor fino. Se acordó priorizar hidratación.
+                  </p>
+                </article>
+              </div>
+              <div class="empty-state" data-empty-state hidden>
+                <i class="bi bi-search" aria-hidden="true"></i>
+                <p>No hay resultados con estos filtros.</p>
+                <button
+                  type="button"
+                  class="btn btn-light btn-sm"
+                  data-reset-filters
+                >
+                  Limpiar filtros
+                </button>
+              </div>
+            </section>
+          </div>
+          <div class="col-12 col-lg-4">
+            <aside class="panel mb-4">
+              <h2>Un cuidado que continúa</h2>
+              <dl class="info-list mt-3">
+                <div>
+                  <dt>Último servicio</dt>
+                  <dd>18 septiembre 2026</dd>
+                </div>
+                <div>
+                  <dt>Especialista</dt>
+                  <dd>Andrea Salazar</dd>
+                </div>
+                <div>
+                  <dt>Objetivo</dt>
+                  <dd>Hidratación y definición</dd>
+                </div>
+              </dl>
+              <div class="mt-3">
+                <a
+                  class="btn btn-outline-primary"
+                  th:href="@{/seguimiento/evolucion}"
+                  ><i class="bi bi-graph-up-arrow" aria-hidden="true"></i>Ver
+                  evolución</a
+                >
+              </div>
+            </aside>
+          </div>
+        </div>
+        <footer th:replace="~{fragments/ui :: footer}"></footer>
+      </main>
+    </div>
+
+    <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
+  </body>
+</html>

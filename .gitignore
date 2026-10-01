@@ -1,0 +1,10 @@
+/target/
+/.idea/
+*.iml
+*.log
+/.tools/
+/.verification/
+/.github/modernize/
+/frontend-design/
+/CONTEXTO_ZAMBACARE_PARA_INFORME.md
+/*.zip

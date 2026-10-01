@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <aside
+      th:fragment="sidebar(active)"
+      class="offcanvas-lg offcanvas-start sidebar"
+      tabindex="-1"
+      id="sidebar"
+      aria-labelledby="sidebarTitle"
+    >
+      <div class="offcanvas-header">
+        <span id="sidebarTitle" class="fw-semibold">Tu espacio Zamba</span>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          data-bs-target="#sidebar"
+          aria-label="Cerrar menú"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <a
+          class="brand"
+          th:href="@{/dashboard}"
+          aria-label="ZambaCare, ir al dashboard"
+        >
+          <img
+            th:src="@{/img/logo/zambacare.svg}"
+            width="43"
+            height="43"
+            alt=""
+          />
+          <span><strong>ZambaCare</strong></span>
+        </a>
+        <div class="sidebar-divider"></div>
+        <nav class="side-nav" aria-label="Menú principal">
+          <a
+            th:href="@{/dashboard}"
+            th:classappend="${active == 'dashboard'} ? 'active'"
+            th:attr="aria-current=${active == 'dashboard' ? 'page' : null}"
+            ><i class="bi bi-grid-1x2" aria-hidden="true"></i> Dashboard</a
+          >
+          <a
+            th:href="@{/clientes}"
+            th:classappend="${active == 'clientes'} ? 'active'"
+            th:attr="aria-current=${active == 'clientes' ? 'page' : null}"
+            ><i class="bi bi-people" aria-hidden="true"></i> Clientes</a
+          >
+          <a
+            th:href="@{/diagnosticos/nuevo}"
+            th:classappend="${active == 'diagnosticos'} ? 'active'"
+            th:attr="aria-current=${active == 'diagnosticos' ? 'page' : null}"
+            ><i class="bi bi-clipboard2-pulse" aria-hidden="true"></i>
+            Diagnósticos</a
+          >
+          <a
+            th:href="@{/historial}"
+            th:classappend="${active == 'tratamientos'} ? 'active'"
+            th:attr="aria-current=${active == 'tratamientos' ? 'page' : null}"
+            ><i class="bi bi-droplet" aria-hidden="true"></i> Tratamientos</a
+          >
+          <a
+            th:href="@{/seguimiento/evolucion}"
+            th:classappend="${active == 'seguimiento'} ? 'active'"
+            th:attr="aria-current=${active == 'seguimiento' ? 'page' : null}"
+            ><i class="bi bi-graph-up-arrow" aria-hidden="true"></i>
+            Seguimiento</a
+          >
+          <a
+            th:href="@{/productos}"
+            th:classappend="${active == 'productos'} ? 'active'"
+            th:attr="aria-current=${active == 'productos' ? 'page' : null}"
+            ><i class="bi bi-bag-heart" aria-hidden="true"></i
+            ><span
+              >Productos<br />
+              recomendados</span
+            ></a
+          >
+        </nav>
+        <nav class="side-nav sidebar-bottom" aria-label="Cuenta">
+          <button
+            type="button"
+            data-sidebar-modal="#staffModal"
+          >
+            <i class="bi bi-person-circle" aria-hidden="true"></i> Mi perfil
+          </button>
+          <button
+            type="button"
+            data-sidebar-modal="#logoutModal"
+          >
+            <i class="bi bi-box-arrow-right" aria-hidden="true"></i> Cerrar
+            sesión
+          </button>
+        </nav>
+      </div>
+    </aside>
+  </body>
+</html>

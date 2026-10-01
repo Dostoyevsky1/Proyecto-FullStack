@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Bienvenido')}"></head>
+  <body class="login-page">
+    <a class="skip-link" href="#contenido">Saltar al formulario</a>
+    <main class="login-layout" id="contenido">
+      <section class="login-story" aria-label="El cuidado comienza contigo">
+        <img
+          th:src="@{/img/clientes/valeria.png}"
+          alt="Retrato ilustrativo de una mujer de cabello rizado en un salón cálido"
+          fetchpriority="high"
+        />
+        <div class="brand">
+          <img
+            th:src="@{/img/logo/zambacare.svg}"
+            width="42"
+            height="42"
+            alt=""
+          /><span><strong>ZambaCare</strong></span>
+        </div>
+        <div class="login-story-copy">
+          <h2>Cuidamos cada historia, rizo a rizo.</h2>
+        </div>
+      </section>
+      <section class="login-right" aria-labelledby="loginTitle">
+        <div class="login-form-wrap">
+          <img th:src="@{/img/logo/zambacare.svg}" alt="" />
+          <h1 id="loginTitle">Bienvenido a ZambaCare</h1>
+          <form
+            class="login-form"
+            th:action="@{/dashboard}"
+            method="get"
+            data-demo-form="navigate"
+            novalidate
+          >
+            <div class="mb-3">
+              <label class="form-label" for="email">Correo electrónico</label
+              ><input
+                class="form-control"
+                id="email"
+                type="email"
+                autocomplete="off"
+                required
+                maxlength="120"
+              />
+              <div class="invalid-feedback">Escribe un correo válido.</div>
+            </div>
+            <div>
+              <label class="form-label" for="password">Contraseña</label>
+              <div class="password-field">
+                <input
+                  class="form-control"
+                  id="password"
+                  type="password"
+                  autocomplete="off"
+                  required
+                  minlength="4"
+                  maxlength="60"
+                /><button
+                  type="button"
+                  class="icon-button"
+                  data-toggle-password
+                  aria-label="Mostrar contraseña"
+                  aria-pressed="false"
+                >
+                  <i class="bi bi-eye" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+            <div class="login-options">
+              <button
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#forgotModal"
+              >
+                ¿Olvidaste tu contraseña?
+              </button>
+            </div>
+            <button class="btn btn-primary w-100" type="submit">
+              Iniciar sesión
+              <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </button>
+          </form>
+        </div>
+        <small class="login-footer"
+          >ZambaCare © 2026 · Zamba Pisando Tierra</small
+        >
+      </section>
+    </main>
+    <div
+      class="modal fade"
+      id="forgotModal"
+      tabindex="-1"
+      aria-labelledby="forgotTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title fs-5" id="forgotTitle">
+              Recuperar contraseña
+            </h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <form
+            data-demo-form="toast"
+            data-success-message="Solicitud simulada. No se ha enviado ningún correo."
+            novalidate
+          >
+            <div class="modal-body">
+              <label class="form-label" for="recoveryEmail"
+                >Correo electrónico</label
+              ><input
+                class="form-control"
+                id="recoveryEmail"
+                type="email"
+                required
+              />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-light"
+                data-bs-dismiss="modal"
+              >
+                Cancelar</button
+              ><button type="submit" class="btn btn-primary">
+                Recuperar contraseña
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <th:block th:replace="~{fragments/ui :: toast}"></th:block>
+  </body>
+</html>

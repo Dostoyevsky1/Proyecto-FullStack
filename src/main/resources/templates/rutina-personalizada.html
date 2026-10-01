@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Rutina personalizada')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/sidebar :: sidebar('seguimiento')}"></aside>
+    <div class="app-main">
+      <header
+        th:replace="~{fragments/navbar :: navbar('Rutina personalizada')}"
+      ></header>
+      <main class="page-content" id="contenido">
+        <nav aria-label="Ruta de navegación">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a th:href="@{/clientes/perfil}">Perfil de Valeria</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Rutina personalizada
+            </li>
+          </ol>
+        </nav>
+        <div class="page-heading">
+          <div>
+            <h1>Mi Rutina Zamba</h1>
+            <p>Un cuidado sencillo, constante y pensado para ti.</p>
+          </div>
+          <div class="heading-actions">
+            <button
+              class="btn btn-outline-primary"
+              type="button"
+              data-toast="Rutina preparada correctamente para esta demostración."
+            >
+              <i class="bi bi-file-earmark-check" aria-hidden="true"></i
+              >Preparar rutina
+            </button>
+          </div>
+        </div>
+        <div th:replace="~{fragments/ui :: client}"></div>
+        <section class="routine-hero" aria-labelledby="routineGoal">
+          <i class="bi bi-flower2" aria-hidden="true"></i>
+          <div>
+            <h2 id="routineGoal">Hidratación y definición, a tu ritmo.</h2>
+            <p>
+              Cabello 3B · Porosidad alta · Objetivo actual: hidratación y
+              definición
+            </p>
+          </div>
+        </section>
+        <section aria-labelledby="weekTitle">
+          <div class="panel-header">
+            <h2 id="weekTitle">Tu semana de cuidado</h2>
+            <span class="pill pill-neutral">Plan de ejemplo</span>
+          </div>
+          <div class="week-grid">
+            <article class="day-card is-today">
+              <span class="day-name">Lunes</span
+              ><i class="bi bi-droplet" aria-hidden="true"></i>
+              <h3>Lavado + hidratación</h3>
+              <p>Limpieza suave y mascarilla.</p>
+            </article>
+            <article class="day-card">
+              <span class="day-name">Martes</span
+              ><i class="bi bi-flower2" aria-hidden="true"></i>
+              <h3>Leave-in + definición</h3>
+              <p>Aplicar en cabello húmedo.</p>
+            </article>
+            <article class="day-card">
+              <span class="day-name">Miércoles</span
+              ><i class="bi bi-moisture" aria-hidden="true"></i>
+              <h3>Refresh</h3>
+              <p>Reactivar con agua y poco producto.</p>
+            </article>
+            <article class="day-card is-rest">
+              <span class="day-name">Jueves</span
+              ><i class="bi bi-moon" aria-hidden="true"></i>
+              <h3>Descanso</h3>
+              <p>Proteger el cabello por la noche.</p>
+            </article>
+            <article class="day-card">
+              <span class="day-name">Viernes</span
+              ><i class="bi bi-wind" aria-hidden="true"></i>
+              <h3>Refresh</h3>
+              <p>Definir solo donde lo necesites.</p>
+            </article>
+            <article class="day-card">
+              <span class="day-name">Sábado</span
+              ><i class="bi bi-heart" aria-hidden="true"></i>
+              <h3>Tratamiento hidratante</h3>
+              <p>Un momento de cuidado profundo.</p>
+            </article>
+            <article class="day-card is-rest">
+              <span class="day-name">Domingo</span
+              ><i class="bi bi-moon-stars" aria-hidden="true"></i>
+              <h3>Descanso</h3>
+              <p>Dejar que el cabello descanse.</p>
+            </article>
+          </div>
+        </section>
+        <div class="row g-4">
+          <div class="col-12 col-lg-6">
+            <section class="panel h-100">
+              <div class="panel-header">
+                <h2>Consejos del especialista</h2>
+                <i class="bi bi-chat-square-heart" aria-hidden="true"></i>
+              </div>
+              <ul class="tips-list">
+                <li>
+                  <i class="bi bi-check2-circle" aria-hidden="true"></i>Evitar
+                  exceso de calor.
+                </li>
+                <li>
+                  <i class="bi bi-check2-circle" aria-hidden="true"></i>Dormir
+                  con protección de satén.
+                </li>
+                <li>
+                  <i class="bi bi-check2-circle" aria-hidden="true"></i>No
+                  manipular el cabello en seco.
+                </li>
+                <li>
+                  <i class="bi bi-check2-circle" aria-hidden="true"></i>Mantener
+                  hidratación constante.
+                </li>
+              </ul>
+              <p class="text-muted small mt-4 mb-0">
+                Andrea Salazar · Especialista Capilar
+              </p>
+            </section>
+          </div>
+          <div class="col-12 col-lg-6">
+            <section class="panel h-100">
+              <div class="panel-header">
+                <h2>Productos incluidos en tu rutina</h2>
+              </div>
+              <div class="product-mini">
+                <img
+                  th:src="@{/img/productos/shampoo.png}"
+                  alt="Envase ficticio de Shampoo Limpieza suave"
+                  loading="lazy"
+                />
+                <div>
+                  <strong>Shampoo Limpieza suave</strong
+                  ><small>Lunes · Limpieza delicada</small>
+                </div>
+              </div>
+              <div class="product-mini">
+                <img
+                  th:src="@{/img/productos/mascarilla.png}"
+                  alt="Envase ficticio de Mascarilla Hidratación"
+                  loading="lazy"
+                />
+                <div>
+                  <strong>Mascarilla Hidratación</strong
+                  ><small>Lunes y sábado · Cuidado hidratante</small>
+                </div>
+              </div>
+              <div class="product-mini">
+                <img
+                  th:src="@{/img/productos/leave-in.png}"
+                  alt="Envase ficticio de Leave-in Ligereza"
+                  loading="lazy"
+                />
+                <div>
+                  <strong>Leave-in Ligereza</strong
+                  ><small>Martes · Hidratación y definición</small>
+                </div>
+              </div>
+              <a class="text-link mt-3" th:href="@{/productos}"
+                >Explorar productos
+                <i class="bi bi-arrow-up-right" aria-hidden="true"></i
+              ></a>
+            </section>
+          </div>
+        </div>
+        <footer th:replace="~{fragments/ui :: footer}"></footer>
+      </main>
+    </div>
+
+    <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
+  </body>
+</html>

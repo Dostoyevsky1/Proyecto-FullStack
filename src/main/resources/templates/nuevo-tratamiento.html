@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Registrar tratamiento')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/sidebar :: sidebar('tratamientos')}"></aside>
+    <div class="app-main">
+      <header
+        th:replace="~{fragments/navbar :: navbar('Registrar tratamiento')}"
+      ></header>
+      <main class="page-content" id="contenido">
+        <nav aria-label="Ruta de navegación">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a th:href="@{/historial}">Historial</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Registrar tratamiento
+            </li>
+          </ol>
+        </nav>
+        <div class="page-heading">
+          <div>
+            <h1>Registrar tratamiento</h1>
+            <p>Documenta los cuidados y observaciones de esta atención.</p>
+          </div>
+          <div class="heading-actions"></div>
+        </div>
+        <div th:replace="~{fragments/ui :: client}"></div>
+        <div class="row g-4">
+          <div class="col-12 col-lg-9">
+            <form
+              class="panel"
+              data-demo-form="modal"
+              data-success-modal="treatmentSuccessModal"
+              novalidate
+            >
+              <div class="section-heading">
+                <i class="bi bi-droplet" aria-hidden="true"></i>
+                <div>
+                  <h2>Detalles de la atención</h2>
+                  <p>Los campos con * son obligatorios.</p>
+                </div>
+              </div>
+              <div class="row g-3">
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="serviceType"
+                    >Tipo de servicio
+                    <span class="required-marker" aria-hidden="true"
+                      >*</span
+                    ></label
+                  >
+                  <select class="form-select" id="serviceType" required>
+                    <option value="">Seleccionar</option>
+                    <option value="Hidratación profunda">
+                      Hidratación profunda
+                    </option>
+                    <option value="Nutrición">Nutrición</option>
+                    <option value="Reconstrucción">Reconstrucción</option>
+                    <option value="Definición">Definición</option>
+                    <option value="Corte">Corte</option>
+                    <option value="Tratamiento de cuero cabelludo">
+                      Tratamiento de cuero cabelludo
+                    </option>
+                    <option value="Otro">Otro</option>
+                  </select>
+                  <div class="invalid-feedback">Selecciona una opción.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="serviceDate"
+                    >Fecha
+                    <span class="required-marker" aria-hidden="true"
+                      >*</span
+                    ></label
+                  >
+                  <input
+                    class="form-control"
+                    id="serviceDate"
+                    type="date"
+                    placeholder=""
+                    required
+                    value="2026-09-28"
+                    max="2026-09-28"
+                  />
+                  <div class="invalid-feedback">Revisa el campo fecha.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="specialist"
+                    >Especialista
+                    <span class="required-marker" aria-hidden="true"
+                      >*</span
+                    ></label
+                  >
+                  <select class="form-select" id="specialist" required>
+                    <option value="">Seleccionar</option>
+                    <option value="Andrea Salazar" selected>
+                      Andrea Salazar
+                    </option>
+                  </select>
+                  <div class="invalid-feedback">Selecciona una opción.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="duration"
+                    >Duración (minutos)
+                    <span class="required-marker" aria-hidden="true"
+                      >*</span
+                    ></label
+                  >
+                  <input
+                    class="form-control"
+                    id="duration"
+                    type="number"
+                    placeholder="Ej. 90"
+                    required
+                    min="5"
+                    max="360"
+                    step="5"
+                  />
+                  <div class="invalid-feedback">
+                    Revisa el campo duración (minutos).
+                  </div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="usedProducts"
+                    >Productos utilizados</label
+                  ><textarea
+                    class="form-control"
+                    id="usedProducts"
+                    rows="3"
+                    placeholder="Ej. Mascarilla Hidratación y Leave-in Ligereza de Raíz."
+                    maxlength="800"
+                  ></textarea>
+                  <div class="invalid-feedback">Completa este campo.</div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="observedResult"
+                    >Resultado observado</label
+                  ><textarea
+                    class="form-control"
+                    id="observedResult"
+                    rows="3"
+                    placeholder="Describe hidratación, textura, definición y respuesta al servicio."
+                    required
+                    maxlength="800"
+                  ></textarea>
+                  <div class="invalid-feedback">Completa este campo.</div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="treatmentNotes"
+                    >Observaciones</label
+                  ><textarea
+                    class="form-control"
+                    id="treatmentNotes"
+                    rows="3"
+                    placeholder="Detalles importantes de la atención."
+                    maxlength="800"
+                  ></textarea>
+                  <div class="invalid-feedback">Completa este campo.</div>
+                </div>
+                <div class="col-12">
+                  <label class="form-label" for="aftercare"
+                    >Recomendaciones posteriores</label
+                  ><textarea
+                    class="form-control"
+                    id="aftercare"
+                    rows="3"
+                    placeholder="Cuidados sugeridos para continuar en casa."
+                    maxlength="800"
+                  ></textarea>
+                  <div class="invalid-feedback">Completa este campo.</div>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="form-label" for="nextVisit"
+                    >Próximo seguimiento
+                  </label>
+                  <input
+                    class="form-control"
+                    id="nextVisit"
+                    type="date"
+                    placeholder=""
+                    min="2026-09-28"
+                    value="2026-10-02"
+                  />
+                  <div class="invalid-feedback">
+                    Revisa el campo próximo seguimiento.
+                  </div>
+                </div>
+              </div>
+              <div class="form-actions">
+                <a class="btn btn-light" th:href="@{/historial}">Cancelar</a
+                ><button type="submit" class="btn btn-primary">
+                  <i class="bi bi-check2" aria-hidden="true"></i>Registrar
+                  tratamiento
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col-12 col-lg-3">
+            <aside class="form-aside">
+              <i class="bi bi-flower2" aria-hidden="true"></i>
+              <h2>Un cuidado pensado para Valeria.</h2>
+              <p>
+                Cabello 3B · Porosidad alta<br />Densidad media · Grosor fino
+              </p>
+              <hr />
+              <p>
+                <strong>Objetivo actual</strong><br />Hidratación y definición.
+              </p>
+              <p class="mb-0">Estado: deshidratación moderada.</p>
+            </aside>
+            <div class="soft-note mt-3">
+              <i class="bi bi-info-circle" aria-hidden="true"></i>
+              <p>
+                El registro se confirma visualmente. El historial conserva sus
+                datos de ejemplo.
+              </p>
+            </div>
+          </div>
+        </div>
+        <footer th:replace="~{fragments/ui :: footer}"></footer>
+      </main>
+    </div>
+    <div
+      class="modal fade success-modal"
+      id="treatmentSuccessModal"
+      tabindex="-1"
+      aria-labelledby="treatmentSuccessModalTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header border-0 pb-0">
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span class="modal-symbol"
+              ><i class="bi bi-check2" aria-hidden="true"></i
+            ></span>
+            <h2 id="treatmentSuccessModalTitle">
+              Tratamiento registrado correctamente
+            </h2>
+            <p class="text-muted">
+              El registro se ha simulado correctamente para esta demostración.
+              No se ha guardado información.
+            </p>
+            <a class="btn btn-primary" th:href="@{/historial}"
+              >Volver al historial</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
+  </body>
+</html>

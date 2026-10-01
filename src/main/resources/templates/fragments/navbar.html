@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <header th:fragment="navbar(title)" class="topbar">
+      <div class="d-flex align-items-center gap-3 min-width-0">
+        <button
+          class="icon-button d-lg-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#sidebar"
+          aria-controls="sidebar"
+          aria-label="Abrir menú"
+        >
+          <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+        <span class="topbar-title" th:text="${title}">Dashboard</span>
+      </div>
+      <div class="topbar-actions">
+        <div class="dropdown">
+          <button
+            type="button"
+            class="icon-button notification-button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            aria-label="Ver notificaciones"
+          >
+            <i class="bi bi-bell" aria-hidden="true"></i
+            ><span class="notification-dot"></span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end notifications-menu">
+            <h2 class="dropdown-header">Tus recordatorios</h2>
+            <a class="dropdown-item" th:href="@{/seguimiento/evolucion}"
+              ><strong>Seguimiento de Valeria</strong
+              ><small>Revisar evolución el 02 de octubre.</small></a
+            >
+            <a class="dropdown-item" th:href="@{/diagnosticos/nuevo}"
+              ><strong>Primera atención de hoy</strong
+              ><small>Diagnóstico capilar a las 09:00.</small></a
+            >
+            <button
+              class="dropdown-item"
+              type="button"
+              data-toast="Notificaciones marcadas como leídas en esta demostración."
+            >
+              <i class="bi bi-check2-all" aria-hidden="true"></i> Marcar como
+              leídas
+            </button>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="staff-button"
+          data-bs-toggle="modal"
+          data-bs-target="#staffModal"
+          aria-label="Ver perfil de Andrea Salazar"
+        >
+          <span class="avatar avatar-staff" aria-hidden="true">AS</span>
+          <span class="staff-copy"><strong>Andrea Salazar</strong></span>
+          <i
+            class="bi bi-chevron-down d-none d-xl-inline"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </header>
+  </body>
+</html>

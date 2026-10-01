@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Nuevo diagnóstico')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/sidebar :: sidebar('diagnosticos')}"></aside>
+    <div class="app-main">
+      <header
+        th:replace="~{fragments/navbar :: navbar('Nuevo diagnóstico')}"
+      ></header>
+      <main class="page-content" id="contenido">
+        <nav aria-label="Ruta de navegación">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a th:href="@{/clientes/perfil}">Perfil de Valeria</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Nuevo diagnóstico
+            </li>
+          </ol>
+        </nav>
+        <div class="page-heading">
+          <div>
+            <h1>Nuevo diagnóstico capilar</h1>
+          </div>
+          <div class="heading-actions"></div>
+        </div>
+        <div th:replace="~{fragments/ui :: client}"></div>
+        <form
+          class="panel"
+          th:action="@{/diagnosticos/resultado}"
+          method="get"
+          data-demo-form="navigate"
+          novalidate
+        >
+          <section class="form-section">
+            <fieldset>
+              <legend>
+                Patrón del cabello<span class="field-hint"
+                  >Selecciona la forma natural predominante.</span
+                >
+              </legend>
+              <div class="pattern-grid">
+                <div class="pattern-option">
+                  <input
+                    type="radio"
+                    name="patron"
+                    id="pattern2A"
+                    value="2A"
+                    required
+                  /><label for="pattern2A"
+                    ><svg viewBox="0 0 30 60" fill="none" aria-hidden="true">
+                      <path
+                        d="M15 1C-5 11 35 20 15 30S-5 47 15 55"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      /></svg
+                    ><span>2A</span></label
+                  >
+                </div>
+                <div class="pattern-option">
+                  <input
+                    type="radio"
+                    name="patron"
+                    id="pattern2B"
+                    value="2B"
+                    required
+                  /><label for="pattern2B"
+                    ><svg viewBox="0 0 30 60" fill="none" aria-hidden="true">
+                      <path
+                        d="M15 1C-5 11 35 20 15 30S-5 47 15 55"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                      /></svg
+                    ><span>2B</span></label
+                  >
+                </div>
+                <div class="pattern-option">
+                  <input
+                    type="radio"
+                    name="patron"
+                    id="pattern2C"
+                    value="2C"
+                    required
+                  /><label for="pattern2C"
+                    ><svg viewBox="0 0 30 60" fill="none" aria-hidden="true">
+                      <path
+                        d="M15 1C-5 11 35 20 15 30S-5 47 15 55"
+                        stroke="currentColor"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                      /></svg
+                    ><span>2C</span></label
+                  >
+                </div>
+                <div class="pattern-option">
+                  <input
+                    type="radio"
+                    name="patron"
+                    id="pattern3A"
+                    value="3A"
+                    required
+                  /><label for="pattern3A"
+                    ><svg viewBox="0 0 30 60" fill="none" aria-hidden="true">
+                      <path
+                        d="M15 1C-4 8 34 15 15 23S-4 39 15 46S34 52 15 59"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      /></svg
+                    ><span>3A</span></label
+                  >
+                </div>
+                <div class="pattern-option">
+                  <input
+                    type="radio"
+                    name="patron"
+                    id="pattern3B"
+                    value="3B"
+                    checked
+                    required
+                  /><label for="pattern3B"
+                    ><svg viewBox="0 0 30 60" fill="none" aria-hidden="true">
+                      <path
+                        d="M15 1C-4 8 34 15 15 23S-4 39 15 46S34 52 15 59"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                      /></svg
+                    ><span>3B</span></label
+                  >
+                </div>
+                <div class="pattern-option">
+                  <input
+                    type="radio"
+                    name="patron"
+                    id="pattern3C"
+                    value="3C"
+                    required
+                  /><label for="pattern3C"
+                    ><svg viewBox="0 0 30 60" fill="none" aria-hidden="true">
+                      <path
+                        d="M15 1C-4 8 34 15 15 23S-4 39 15 46S34 52 15 59"
+                        stroke="currentColor"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                      /></svg
+                    ><span>3C</span></label
+                  >
+                </div>
+                <div class="pattern-option">
+                  <input
+                    type="radio"
+                    name="patron"
+                    id="pattern4A"
+                    value="4A"
+                    required
+                  /><label for="pattern4A"
+                    ><svg viewBox="0 0 30 60" fill="none" aria-hidden="true">
+                      <path
+                        d="M15 1C-5 8 35 12 15 20S-5 28 15 36S35 44 15 52"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      /></svg
+                    ><span>4A</span></label
+                  >
+                </div>
+                <div class="pattern-option">
+                  <input
+                    type="radio"
+                    name="patron"
+                    id="pattern4B"
+                    value="4B"
+                    required
+                  /><label for="pattern4B"
+                    ><svg viewBox="0 0 30 60" fill="none" aria-hidden="true">
+                      <path
+                        d="M15 1C-5 8 35 12 15 20S-5 28 15 36S35 44 15 52"
+                        stroke="currentColor"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                      /></svg
+                    ><span>4B</span></label
+                  >
+                </div>
+                <div class="pattern-option">
+                  <input
+                    type="radio"
+                    name="patron"
+                    id="pattern4C"
+                    value="4C"
+                    required
+                  /><label for="pattern4C"
+                    ><svg viewBox="0 0 30 60" fill="none" aria-hidden="true">
+                      <path
+                        d="M15 1C-5 8 35 12 15 20S-5 28 15 36S35 44 15 52"
+                        stroke="currentColor"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                      /></svg
+                    ><span>4C</span></label
+                  >
+                </div>
+              </div>
+              <div class="mt-3">
+                <div class="choice-group">
+                  <div class="choice-option">
+                    <input
+                      id="patron0"
+                      name="patron"
+                      type="radio"
+                      value="1 — Liso"
+                      required
+                    /><label for="patron0">1 — Liso</label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </section>
+          <section class="form-section">
+            <div class="row g-4">
+              <div class="col-12 col-md-4">
+                <fieldset>
+                  <legend>Porosidad</legend>
+                  <div class="choice-group">
+                    <div class="choice-option">
+                      <input
+                        id="porosidad0"
+                        name="porosidad"
+                        type="radio"
+                        value="Baja"
+                        required
+                      /><label for="porosidad0">Baja</label>
+                    </div>
+                    <div class="choice-option">
+                      <input
+                        id="porosidad1"
+                        name="porosidad"
+                        type="radio"
+                        value="Media"
+                        required
+                      /><label for="porosidad1">Media</label>
+                    </div>
+                    <div class="choice-option">
+                      <input
+                        id="porosidad2"
+                        name="porosidad"
+                        type="radio"
+                        value="Alta"
+                        checked
+                        required
+                      /><label for="porosidad2">Alta</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-12 col-md-4">
+                <fieldset>
+                  <legend>Densidad</legend>
+                  <div class="choice-group">
+                    <div class="choice-option">
+                      <input
+                        id="densidad0"
+                        name="densidad"
+                        type="radio"
+                        value="Baja"
+                        required
+                      /><label for="densidad0">Baja</label>
+                    </div>
+                    <div class="choice-option">
+                      <input
+                        id="densidad1"
+                        name="densidad"
+                        type="radio"
+                        value="Media"
+                        checked
+                        required
+                      /><label for="densidad1">Media</label>
+                    </div>
+                    <div class="choice-option">
+                      <input
+                        id="densidad2"
+                        name="densidad"
+                        type="radio"
+                        value="Alta"
+                        required
+                      /><label for="densidad2">Alta</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-12 col-md-4">
+                <fieldset>
+                  <legend>Grosor</legend>
+                  <div class="choice-group">
+                    <div class="choice-option">
+                      <input
+                        id="grosor0"
+                        name="grosor"
+                        type="radio"
+                        value="Fino"
+                        checked
+                        required
+                      /><label for="grosor0">Fino</label>
+                    </div>
+                    <div class="choice-option">
+                      <input
+                        id="grosor1"
+                        name="grosor"
+                        type="radio"
+                        value="Medio"
+                        required
+                      /><label for="grosor1">Medio</label>
+                    </div>
+                    <div class="choice-option">
+                      <input
+                        id="grosor2"
+                        name="grosor"
+                        type="radio"
+                        value="Grueso"
+                        required
+                      /><label for="grosor2">Grueso</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+            </div>
+          </section>
+          <section class="form-section">
+            <fieldset>
+              <legend>
+                Estado actual<span class="field-hint"
+                  >Puedes seleccionar más de una característica.</span
+                >
+              </legend>
+              <div class="row g-3">
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div class="form-check check-tile">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="condition0"
+                      checked
+                    /><label class="form-check-label" for="condition0"
+                      >Deshidratación</label
+                    >
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div class="form-check check-tile">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="condition1"
+                      checked
+                    /><label class="form-check-label" for="condition1"
+                      >Frizz</label
+                    >
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div class="form-check check-tile">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="condition2"
+                    /><label class="form-check-label" for="condition2"
+                      >Puntas abiertas</label
+                    >
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div class="form-check check-tile">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="condition3"
+                    /><label class="form-check-label" for="condition3"
+                      >Daño químico</label
+                    >
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div class="form-check check-tile">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="condition4"
+                    /><label class="form-check-label" for="condition4"
+                      >Quiebre</label
+                    >
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div class="form-check check-tile">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="condition5"
+                    /><label class="form-check-label" for="condition5"
+                      >Cuero cabelludo sensible</label
+                    >
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div class="form-check check-tile">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="condition6"
+                    /><label class="form-check-label" for="condition6"
+                      >Caída aparente</label
+                    >
+                  </div>
+                </div>
+                <div class="col-12 col-md-6 col-xl-3">
+                  <div class="form-check check-tile">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      id="condition7"
+                      checked
+                    /><label class="form-check-label" for="condition7"
+                      >Falta de definición</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </section>
+          <section class="form-section">
+            <div class="section-heading">
+              <i class="bi bi-sun" aria-hidden="true"></i>
+              <div>
+                <h2>Hábitos de cuidado</h2>
+              </div>
+            </div>
+            <div class="row g-4">
+              <div class="col-12 col-md-6">
+                <label class="form-label" for="washFrequency"
+                  >Frecuencia de lavado
+                  <span class="required-marker" aria-hidden="true"
+                    >*</span
+                  ></label
+                >
+                <select class="form-select" id="washFrequency" required>
+                  <option value="">Seleccionar</option>
+                  <option value="Todos los días">Todos los días</option>
+                  <option value="Cada 2 días">Cada 2 días</option>
+                  <option value="2 veces por semana" selected>
+                    2 veces por semana
+                  </option>
+                  <option value="1 vez por semana">1 vez por semana</option>
+                </select>
+                <div class="invalid-feedback">Selecciona una opción.</div>
+              </div>
+              <div class="col-12 col-md-6">
+                <fieldset>
+                  <legend class="form-label">Uso de calor</legend>
+                  <div class="choice-group">
+                    <div class="choice-option">
+                      <input
+                        id="calor0"
+                        name="calor"
+                        type="radio"
+                        value="Nunca"
+                        required
+                      /><label for="calor0">Nunca</label>
+                    </div>
+                    <div class="choice-option">
+                      <input
+                        id="calor1"
+                        name="calor"
+                        type="radio"
+                        value="Ocasional"
+                        checked
+                        required
+                      /><label for="calor1">Ocasional</label>
+                    </div>
+                    <div class="choice-option">
+                      <input
+                        id="calor2"
+                        name="calor"
+                        type="radio"
+                        value="Frecuente"
+                        required
+                      /><label for="calor2">Frecuente</label>
+                    </div>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="chemicalHistory"
+                  >Tratamientos químicos previos</label
+                ><textarea
+                  class="form-control"
+                  id="chemicalHistory"
+                  rows="3"
+                  placeholder="Ej. Coloración hace 6 meses; sin alisados recientes."
+                  maxlength="800"
+                ></textarea>
+                <div class="invalid-feedback">Completa este campo.</div>
+              </div>
+            </div>
+          </section>
+          <section class="form-section">
+            <div class="col-12">
+              <label class="form-label" for="diagnosticNotes"
+                >Observaciones del especialista</label
+              ><textarea
+                class="form-control"
+                id="diagnosticNotes"
+                rows="3"
+                maxlength="800"
+              ></textarea>
+              <div class="invalid-feedback">Completa este campo.</div>
+            </div>
+          </section>
+          <div class="form-actions">
+            <a class="btn btn-light" th:href="@{/clientes/perfil}">Cancelar</a
+            ><button type="submit" class="btn btn-primary">
+              <i class="bi bi-clipboard2-check" aria-hidden="true"></i>Generar
+              diagnóstico
+            </button>
+          </div>
+        </form>
+        <footer th:replace="~{fragments/ui :: footer}"></footer>
+      </main>
+    </div>
+
+    <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
+  </body>
+</html>

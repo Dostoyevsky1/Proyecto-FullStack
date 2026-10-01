@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Evolución capilar')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/sidebar :: sidebar('seguimiento')}"></aside>
+    <div class="app-main">
+      <header
+        th:replace="~{fragments/navbar :: navbar('Evolución capilar')}"
+      ></header>
+      <main class="page-content" id="contenido">
+        <nav aria-label="Ruta de navegación">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a th:href="@{/clientes/perfil}">Perfil de Valeria</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              Evolución capilar
+            </li>
+          </ol>
+        </nav>
+        <div class="page-heading">
+          <div>
+            <h1>Evolución capilar</h1>
+          </div>
+          <div class="heading-actions">
+            <a class="btn btn-primary" th:href="@{/seguimiento/rutina}"
+              ><i class="bi bi-calendar2-week" aria-hidden="true"></i>Ver rutina
+              actual</a
+            >
+          </div>
+        </div>
+        <div th:replace="~{fragments/ui :: client}"></div>
+        <section
+          class="row g-4 mb-4"
+          aria-label="Comparaciones capilares de 2026"
+        >
+          <div class="col-12 col-md-6">
+            <figure class="comparison-card mb-0">
+              <div class="comparison-header">
+                <h2>Enero 2026</h2>
+                <span class="pill pill-neutral">Inicio del proceso</span>
+              </div>
+              <div class="comparison-image">
+                <img
+                  th:src="@{/img/clientes/enero.png}"
+                  alt="Comparación ficticia de Enero 2026: antes a la izquierda, después a la derecha"
+                  loading="lazy"
+                /><span class="before-label">Antes</span
+                ><span class="after-label">Después</span>
+              </div>
+              <figcaption class="comparison-caption">
+                Primera comparación del año. Se observa tendencia al frizz.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-12 col-md-6">
+            <figure class="comparison-card mb-0">
+              <div class="comparison-header">
+                <h2>Marzo 2026</h2>
+                <span class="pill pill-neutral">Constancia</span>
+              </div>
+              <div class="comparison-image">
+                <img
+                  th:src="@{/img/clientes/marzo.png}"
+                  alt="Comparación ficticia de Marzo 2026: antes a la izquierda, después a la derecha"
+                  loading="lazy"
+                /><span class="before-label">Antes</span
+                ><span class="after-label">Después</span>
+              </div>
+              <figcaption class="comparison-caption">
+                Rizos más agrupados después del cuidado hidratante.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-12 col-md-6">
+            <figure class="comparison-card mb-0">
+              <div class="comparison-header">
+                <h2>Junio 2026</h2>
+                <span class="pill pill-neutral">Mantenimiento</span>
+              </div>
+              <div class="comparison-image">
+                <img
+                  th:src="@{/img/clientes/junio.png}"
+                  alt="Comparación ficticia de Junio 2026: antes a la izquierda, después a la derecha"
+                  loading="lazy"
+                /><span class="before-label">Antes</span
+                ><span class="after-label">Después</span>
+              </div>
+              <figcaption class="comparison-caption">
+                Mantenimiento de forma y definición en medios y puntas.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="col-12 col-md-6">
+            <figure class="comparison-card mb-0">
+              <div class="comparison-header">
+                <h2>Septiembre 2026</h2>
+                <span class="pill pill-neutral">Último registro</span>
+              </div>
+              <div class="comparison-image">
+                <img
+                  th:src="@{/img/clientes/septiembre.png}"
+                  alt="Comparación ficticia de Septiembre 2026: antes a la izquierda, después a la derecha"
+                  loading="lazy"
+                /><span class="before-label">Antes</span
+                ><span class="after-label">Después</span>
+              </div>
+              <figcaption class="comparison-caption">
+                Hidratación y definición después de la última atención.
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+        <div class="row g-4 justify-content-center">
+          <div class="col-12 col-lg-7">
+            <section class="panel h-100">
+              <div class="panel-header">
+                <h2>Indicadores de seguimiento</h2>
+                <span class="pill pill-olive">Septiembre</span>
+              </div>
+              <div class="metric-progress">
+                <div><span>Hidratación</span><strong>72%</strong></div>
+                <div
+                  class="progress"
+                  role="progressbar"
+                  aria-label="Hidratación, valor ficticio"
+                  aria-valuenow="72"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <div class="progress-bar" style="width: 72%"></div>
+                </div>
+                <small>Puntaje ilustrativo después de la atención.</small>
+              </div>
+              <div class="metric-progress">
+                <div><span>Definición</span><strong>80%</strong></div>
+                <div
+                  class="progress"
+                  role="progressbar"
+                  aria-label="Definición, valor ficticio"
+                  aria-valuenow="80"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <div class="progress-bar" style="width: 80%"></div>
+                </div>
+                <small>Puntaje ilustrativo después de la atención.</small>
+              </div>
+              <div class="metric-progress">
+                <div><span>Frizz</span><strong>25%</strong></div>
+                <div
+                  class="progress"
+                  role="progressbar"
+                  aria-label="Frizz, valor ficticio"
+                  aria-valuenow="25"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <div class="progress-bar" style="width: 25%"></div>
+                </div>
+                <small
+                  >Presencia estimada: un valor menor indica menos frizz.</small
+                >
+              </div>
+              <div class="metric-progress">
+                <div><span>Elasticidad</span><strong>65%</strong></div>
+                <div
+                  class="progress"
+                  role="progressbar"
+                  aria-label="Elasticidad, valor ficticio"
+                  aria-valuenow="65"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <div class="progress-bar" style="width: 65%"></div>
+                </div>
+                <small>Puntaje ilustrativo después de la atención.</small>
+              </div>
+            </section>
+          </div>
+        </div>
+        <footer th:replace="~{fragments/ui :: footer}"></footer>
+      </main>
+    </div>
+
+    <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
+  </body>
+</html>
