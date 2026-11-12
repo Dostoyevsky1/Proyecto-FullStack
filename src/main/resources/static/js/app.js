@@ -179,6 +179,28 @@
       .textContent.replace(/\s/g, "");
   });
 
+  const appointmentModal = document.getElementById("appointmentModal");
+  appointmentModal?.addEventListener("show.bs.modal", (event) => {
+    const appointment = event.relatedTarget;
+    if (!appointment) return;
+    document.getElementById("appointmentModalTitle").textContent =
+      appointment.dataset.client;
+    document.getElementById("appointmentModalTime").textContent =
+      appointment.dataset.time;
+    document.getElementById("appointmentModalService").textContent =
+      appointment.dataset.service;
+    document.getElementById("appointmentModalSpecialist").textContent =
+      appointment.dataset.specialist;
+    document.getElementById("appointmentDate").value =
+      appointment.dataset.date;
+    document.getElementById("appointmentState").value =
+      appointment.dataset.state === "Por confirmar"
+        ? "Confirmada"
+        : appointment.dataset.state;
+    document.getElementById("appointmentStatusForm").action =
+      `/citas/${appointment.dataset.id}/estado`;
+  });
+
   const sidebar = document.getElementById("sidebar");
   document.querySelectorAll("[data-sidebar-modal]").forEach((button) => {
     button.addEventListener("click", () => {

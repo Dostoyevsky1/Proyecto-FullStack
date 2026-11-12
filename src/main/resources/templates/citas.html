@@ -7,32 +7,130 @@
     <div class="app-main">
       <header th:replace="~{fragments/navbar :: navbar('Citas')}"></header>
       <main class="page-content" id="contenido">
-        <div class="page-heading">
-          <div><h1>Agenda de citas</h1></div>
-          <div class="heading-actions"><a class="btn btn-primary" th:href="@{/citas/nueva(fecha=${fecha})}"><i class="bi bi-plus-lg" aria-hidden="true"></i>Nueva cita</a></div>
-        </div>
-        <div class="alert alert-success" role="status" th:if="${mensaje}" th:text="${mensaje}">Estado actualizado</div>
-        <section class="panel agenda-toolbar">
-          <form class="date-filter" th:action="@{/citas}" method="get"><label class="form-label" for="fechaAgenda">Fecha</label><div class="input-group"><input class="form-control" id="fechaAgenda" name="fecha" type="date" th:value="${fecha}" /><button class="btn btn-light" type="submit">Consultar</button></div></form>
-          <div class="capacity-summary"><span>Capacidad del local</span><strong th:text="${total + ' de ' + capacidad + ' citas'}">8 de 12 citas</strong><div class="progress progress-soft"><div class="progress-bar" th:style="${'width:' + ocupacion + '%'}"></div></div></div>
-        </section>
-        <section class="row g-3 my-1" aria-label="Resumen de agenda">
-          <div class="col-6 col-xl-3"><article class="stat-card"><div class="stat-top"><span class="stat-number" th:text="${total}">8</span><span class="stat-icon"><i class="bi bi-calendar2-week"></i></span></div><p class="stat-label">Citas del día</p></article></div>
-          <div class="col-6 col-xl-3"><article class="stat-card"><div class="stat-top"><span class="stat-number" th:text="${confirmadas}">5</span><span class="stat-icon"><i class="bi bi-check2-circle"></i></span></div><p class="stat-label">Confirmadas</p></article></div>
-          <div class="col-6 col-xl-3"><article class="stat-card"><div class="stat-top"><span class="stat-number" th:text="${enAtencion}">1</span><span class="stat-icon"><i class="bi bi-hourglass-split"></i></span></div><p class="stat-label">En atención</p></article></div>
-          <div class="col-6 col-xl-3"><article class="stat-card"><div class="stat-top"><span class="stat-number" th:text="${disponibles}">4</span><span class="stat-icon"><i class="bi bi-clock"></i></span></div><p class="stat-label">Cupos disponibles</p></article></div>
-        </section>
-        <div class="capacity-notice" th:if="${ocupacion >= 80}"><i class="bi bi-exclamation-triangle"></i><div><strong>Agenda cerca del límite</strong><span>Los nuevos registros deberán utilizar horarios disponibles u otra fecha.</span></div></div>
-        <section class="panel mt-4">
-          <div class="panel-header"><h2>Atenciones programadas</h2><span class="pill pill-neutral" th:text="${#temporals.format(fecha, 'dd/MM/yyyy')}">12/11/2026</span></div>
-          <div class="table-responsive" th:if="${!#lists.isEmpty(citas)}">
-            <table class="table appointment-table">
-              <thead><tr><th>Horario</th><th>Cliente</th><th>Servicio</th><th>Especialista</th><th>Estado</th><th>Actualizar</th></tr></thead>
-              <tbody><tr th:each="cita : ${citas}"><td><strong th:text="${#temporals.format(cita.horaInicio, 'HH:mm')}">09:00</strong><small th:text="${#temporals.format(cita.horaFin, 'HH:mm')}">10:00</small></td><td th:text="${clientesPorId[cita.clienteId]}">Cliente</td><td th:text="${cita.servicio}">Servicio</td><td th:text="${cita.especialista}">Especialista</td><td><span class="pill" th:classappend="${cita.estado == 'Completada'} ? 'pill-neutral' : (${cita.estado == 'En atención'} ? 'pill-sand' : (${cita.estado == 'Cancelada'} ? 'pill-danger' : 'pill-olive'))" th:text="${cita.estado}">Confirmada</span></td><td><form class="status-form" th:action="@{/citas/{id}/estado(id=${cita.id})}" method="post"><input type="hidden" name="fecha" th:value="${fecha}" /><select class="form-select form-select-sm" name="estado" th:aria-label="${'Cambiar estado de la cita de ' + clientesPorId[cita.clienteId]}"><option th:selected="${cita.estado == 'Confirmada'}">Confirmada</option><option th:selected="${cita.estado == 'En atención'}">En atención</option><option th:selected="${cita.estado == 'Completada'}">Completada</option><option th:selected="${cita.estado == 'Cancelada'}">Cancelada</option></select><button class="btn btn-light btn-sm" type="submit">Guardar</button></form></td></tr></tbody>
-            </table>
+        <div class="page-heading agenda-heading">
+          <div>
+            <h1>Agenda semanal</h1>
+            <p th:text="${semanaLabel}">9 nov – 15 nov 2026</p>
           </div>
-          <div class="empty-state compact" th:if="${#lists.isEmpty(citas)}"><i class="bi bi-calendar2"></i><h2>No hay citas para esta fecha</h2><a class="btn btn-primary" th:href="@{/citas/nueva(fecha=${fecha})}">Registrar cita</a></div>
+          <div class="heading-actions">
+            <a class="btn btn-light" th:href="@{/citas}">Hoy</a>
+            <div class="week-navigation" aria-label="Cambiar semana">
+              <a class="btn btn-light btn-icon" th:href="@{/citas(fecha=${semanaAnterior})}" aria-label="Semana anterior"><i class="bi bi-chevron-left"></i></a>
+              <a class="btn btn-light btn-icon" th:href="@{/citas(fecha=${semanaSiguiente})}" aria-label="Semana siguiente"><i class="bi bi-chevron-right"></i></a>
+            </div>
+            <a class="btn btn-primary" th:href="@{/citas/nueva(fecha=${fecha})}"><i class="bi bi-plus-lg" aria-hidden="true"></i>Nueva cita</a>
+          </div>
+        </div>
+
+        <div class="alert alert-success" role="status" th:if="${mensaje}" th:text="${mensaje}">Estado actualizado</div>
+
+        <section class="agenda-summary" aria-label="Resumen de agenda">
+          <div><span>Esta semana</span><strong th:text="${totalSemana}">16</strong></div>
+          <div><span>Hoy</span><strong th:text="${totalHoy}">8</strong></div>
+          <div><span>Confirmadas</span><strong th:text="${confirmadas}">10</strong></div>
+          <div><span>Cupos disponibles hoy</span><strong th:text="${disponibles + ' de ' + capacidad}">4 de 12</strong></div>
+          <div class="agenda-occupancy" aria-label="Ocupación de hoy">
+            <span>Ocupación de hoy</span>
+            <div class="progress progress-soft"><div class="progress-bar" th:style="${'width:' + ocupacion + '%'}"></div></div>
+          </div>
         </section>
+
+        <div class="capacity-notice" th:if="${ocupacion >= 80}">
+          <i class="bi bi-exclamation-triangle" aria-hidden="true"></i>
+          <div><strong>Agenda cerca del límite</strong><span>Quedan pocos cupos disponibles para hoy.</span></div>
+        </div>
+
+        <section class="weekly-calendar mt-4" aria-label="Calendario semanal de citas">
+          <div class="calendar-scroll">
+            <div class="calendar-grid">
+              <div class="calendar-corner"><i class="bi bi-clock" aria-hidden="true"></i></div>
+              <div
+                th:each="dia, iter : ${dias}"
+                class="calendar-day-header"
+                th:classappend="${dia.equals(hoy)} ? ' is-today'"
+              >
+                <span th:text="${nombresDias[iter.index]}">Lun</span>
+                <strong th:text="${#temporals.format(dia, 'dd')}">09</strong>
+              </div>
+
+              <div class="calendar-time-axis" aria-hidden="true">
+                <span style="top: 0px">08:00</span>
+                <span style="top: 60px">09:00</span>
+                <span style="top: 120px">10:00</span>
+                <span style="top: 180px">11:00</span>
+                <span style="top: 240px">12:00</span>
+                <span style="top: 300px">13:00</span>
+                <span style="top: 360px">14:00</span>
+                <span style="top: 420px">15:00</span>
+                <span style="top: 480px">16:00</span>
+                <span style="top: 540px">17:00</span>
+                <span style="top: 600px">18:00</span>
+                <span style="top: 660px">19:00</span>
+              </div>
+
+              <div
+                th:each="dia, iter : ${dias}"
+                class="calendar-day-column"
+                th:classappend="${dia.equals(hoy)} ? ' is-today'"
+              >
+                <button
+                  th:each="evento : ${eventos}"
+                  th:if="${evento.dia == iter.index}"
+                  type="button"
+                  class="calendar-event"
+                  th:classappend="${evento.estado == 'Completada'} ? ' event-completed' : (${evento.estado == 'En atención'} ? ' event-active' : (${evento.estado == 'Cancelada'} ? ' event-cancelled' : (${evento.estado == 'Por confirmar'} ? ' event-pending' : ' event-confirmed')))"
+                  th:style="${'top:' + evento.posicion + 'px;height:' + evento.altura + 'px;left:calc(' + evento.izquierda + '% + 4px);width:calc(' + evento.ancho + '% - 8px)'}"
+                  data-bs-toggle="modal"
+                  data-bs-target="#appointmentModal"
+                  th:attr="data-id=${evento.id},data-client=${evento.clienteNombre},data-service=${evento.servicio},data-specialist=${evento.especialista},data-date=${evento.fecha},data-time=${#temporals.format(evento.horaInicio, 'HH:mm') + ' – ' + #temporals.format(evento.horaFin, 'HH:mm')},data-state=${evento.estado},aria-label=${evento.clienteNombre + ', ' + evento.servicio + ', ' + #temporals.format(evento.horaInicio, 'HH:mm')}"
+                >
+                  <span class="event-time" th:text="${#temporals.format(evento.horaInicio, 'HH:mm') + ' – ' + #temporals.format(evento.horaFin, 'HH:mm')}">09:00 – 10:00</span>
+                  <strong th:text="${evento.clienteNombre}">Valeria Mendoza</strong>
+                  <span class="event-service" th:text="${evento.servicio}">Hidratación profunda</span>
+                  <small th:text="${evento.especialista}">Andrea Salazar</small>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="calendar-legend" aria-label="Estados de las citas">
+            <span><i class="legend-confirmed"></i>Confirmada</span>
+            <span><i class="legend-active"></i>En atención</span>
+            <span><i class="legend-pending"></i>Por confirmar</span>
+            <span><i class="legend-completed"></i>Completada</span>
+          </div>
+        </section>
+
+        <div class="modal fade" id="appointmentModal" tabindex="-1" aria-labelledby="appointmentModalTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div>
+                  <span class="modal-kicker" id="appointmentModalTime">10:30 – 12:00</span>
+                  <h2 class="modal-title" id="appointmentModalTitle">Valeria Mendoza</h2>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+              </div>
+              <div class="modal-body appointment-detail">
+                <div><i class="bi bi-stars" aria-hidden="true"></i><span><small>Servicio</small><strong id="appointmentModalService">Hidratación profunda</strong></span></div>
+                <div><i class="bi bi-person" aria-hidden="true"></i><span><small>Especialista</small><strong id="appointmentModalSpecialist">Andrea Salazar</strong></span></div>
+                <form id="appointmentStatusForm" method="post">
+                  <input id="appointmentDate" type="hidden" name="fecha" />
+                  <label class="form-label" for="appointmentState">Estado</label>
+                  <div class="d-flex gap-2 align-items-stretch">
+                    <select class="form-select" id="appointmentState" name="estado">
+                      <option>Confirmada</option>
+                      <option>En atención</option>
+                      <option>Completada</option>
+                      <option>Cancelada</option>
+                    </select>
+                    <button class="btn btn-primary" type="submit">Actualizar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <footer th:replace="~{fragments/ui :: footer}"></footer>
       </main>
     </div>

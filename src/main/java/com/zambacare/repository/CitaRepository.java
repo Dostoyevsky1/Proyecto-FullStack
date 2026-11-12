@@ -7,4 +7,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CitaRepository extends JpaRepository<Cita, Long> {
     List<Cita> findByFechaOrderByHoraInicioAsc(LocalDate fecha);
+    List<Cita> findByFechaBetweenOrderByFechaAscHoraInicioAsc(LocalDate inicio, LocalDate fin);
 }

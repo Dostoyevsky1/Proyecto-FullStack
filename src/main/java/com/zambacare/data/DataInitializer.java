@@ -16,6 +16,8 @@ import com.zambacare.service.CuentaClienteService;
 import com.zambacare.service.MembresiaService;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.DayOfWeek;
+import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -67,6 +69,7 @@ public class DataInitializer implements ApplicationRunner {
         clienteRepository.saveAll(List.of(valeria, camila, daniela, lucia, maria, ximena, alejandra, paola));
 
         LocalDate hoy = LocalDate.now();
+        LocalDate lunes = hoy.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
         citaRepository.saveAll(List.of(
             cita(maria.getId(), hoy, "09:00", 60, "Diagnóstico capilar", "Andrea Salazar", "Completada"),
             cita(valeria.getId(), hoy, "10:30", 90, "Hidratación profunda", "Andrea Salazar", "En atención"),
@@ -75,7 +78,15 @@ public class DataInitializer implements ApplicationRunner {
             cita(lucia.getId(), hoy, "13:00", 60, "Definición", "Andrea Salazar", "Confirmada"),
             cita(ximena.getId(), hoy, "14:30", 45, "Corte de mantenimiento", "Andrea Salazar", "Confirmada"),
             cita(alejandra.getId(), hoy, "15:00", 90, "Reconstrucción", "Rosa Medina", "Confirmada"),
-            cita(paola.getId(), hoy, "16:30", 60, "Seguimiento", "Andrea Salazar", "Por confirmar")
+            cita(paola.getId(), hoy, "16:30", 60, "Seguimiento", "Andrea Salazar", "Por confirmar"),
+            cita(camila.getId(), lunes, "09:00", 75, "Control de evolución", "Rosa Medina", "Completada"),
+            cita(daniela.getId(), lunes, "12:00", 90, "Nutrición", "Rosa Medina", "Completada"),
+            cita(lucia.getId(), lunes.plusDays(1), "10:00", 60, "Definición", "Rosa Medina", "Confirmada"),
+            cita(ximena.getId(), lunes.plusDays(1), "14:00", 45, "Corte de mantenimiento", "Rosa Medina", "Confirmada"),
+            cita(alejandra.getId(), lunes.plusDays(2), "09:30", 90, "Reconstrucción", "Rosa Medina", "Confirmada"),
+            cita(valeria.getId(), lunes.plusDays(2), "13:30", 75, "Hidratación profunda", "Rosa Medina", "Confirmada"),
+            cita(maria.getId(), lunes.plusDays(4), "11:00", 60, "Diagnóstico capilar", "Rosa Medina", "Por confirmar"),
+            cita(paola.getId(), lunes.plusDays(5), "09:30", 90, "Tratamiento de cuero cabelludo", "Rosa Medina", "Confirmada")
         ));
 
         Diagnostico diagnostico = new Diagnostico();

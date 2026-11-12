@@ -21,6 +21,10 @@ public class CitaService {
         return citaRepository.findByFechaOrderByHoraInicioAsc(fecha);
     }
 
+    public List<Cita> listarSemana(LocalDate inicio, LocalDate fin) {
+        return citaRepository.findByFechaBetweenOrderByFechaAscHoraInicioAsc(inicio, fin);
+    }
+
     public long activas(LocalDate fecha) {
         return listar(fecha).stream().filter(cita -> !"Cancelada".equalsIgnoreCase(cita.getEstado())).count();
     }
