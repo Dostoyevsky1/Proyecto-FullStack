@@ -9,31 +9,31 @@
       <main class="page-content" id="contenido">
         <div class="page-heading"><div><h1>Buenos días, Andrea</h1></div></div>
         <section class="welcome-banner" aria-labelledby="welcomeTitle">
-          <div class="welcome-copy"><h2 id="welcomeTitle">Tienes 4 atenciones en tu agenda.</h2></div>
+          <div class="welcome-copy"><h2 id="welcomeTitle" th:text="${'Tienes ' + totalCitas + ' atenciones en tu agenda.'}">Tienes 8 atenciones en tu agenda.</h2><a class="btn btn-light btn-sm mt-3" th:href="@{/citas}">Gestionar agenda</a></div>
           <img class="welcome-illustration" th:src="@{/img/dashboard-agenda.svg}" width="600" height="320" alt="" />
         </section>
         <section class="row g-3 mb-4" aria-label="Resumen">
-          <div class="col-6">
+          <div class="col-6 col-xl-3">
             <article class="stat-card">
               <div class="stat-top"><span class="stat-number" th:text="${totalClientes}">8</span><span class="stat-icon"><i class="bi bi-people" aria-hidden="true"></i></span></div>
               <p class="stat-label">Clientes registrados</p>
             </article>
           </div>
-          <div class="col-6">
+          <div class="col-6 col-xl-3">
             <article class="stat-card">
               <div class="stat-top"><span class="stat-number" th:text="${totalDiagnosticos}">1</span><span class="stat-icon"><i class="bi bi-clipboard2-pulse" aria-hidden="true"></i></span></div>
               <p class="stat-label">Diagnósticos realizados</p>
             </article>
           </div>
+          <div class="col-6 col-xl-3"><article class="stat-card"><div class="stat-top"><span class="stat-number" th:text="${totalCitas}">8</span><span class="stat-icon"><i class="bi bi-calendar2-check" aria-hidden="true"></i></span></div><p class="stat-label">Citas de hoy</p></article></div>
+          <div class="col-6 col-xl-3"><article class="stat-card"><div class="stat-top"><span class="stat-number" th:text="${cuposDisponibles}">4</span><span class="stat-icon"><i class="bi bi-clock" aria-hidden="true"></i></span></div><p class="stat-label">Cupos disponibles</p></article></div>
         </section>
         <div class="row g-4">
           <div class="col-12">
             <section class="panel h-100">
-              <div class="panel-header"><h2>Agenda de hoy</h2></div>
-              <div class="schedule-item"><time class="schedule-time">09:00</time><div class="schedule-info"><strong>María Fernanda López</strong><small>Diagnóstico capilar</small></div><span class="pill pill-olive d-none d-sm-inline-flex">Confirmada</span></div>
-              <div class="schedule-item"><time class="schedule-time">10:30</time><div class="schedule-info"><strong>Valeria Mendoza</strong><small>Tratamiento hidratante</small></div><span class="pill pill-olive d-none d-sm-inline-flex">Confirmada</span></div>
-              <div class="schedule-item"><time class="schedule-time">12:00</time><div class="schedule-info"><strong>Camila Torres</strong><small>Control de evolución</small></div><span class="pill pill-sand d-none d-sm-inline-flex">Por confirmar</span></div>
-              <div class="schedule-item"><time class="schedule-time">15:00</time><div class="schedule-info"><strong>Lucía Fernández</strong><small>Definición</small></div><span class="pill pill-olive d-none d-sm-inline-flex">Confirmada</span></div>
+              <div class="panel-header"><h2>Agenda de hoy</h2><a th:href="@{/citas}">Ver agenda</a></div>
+              <div class="schedule-item" th:each="cita, estado : ${citasHoy}" th:if="${estado.index < 5}"><time class="schedule-time" th:text="${#temporals.format(cita.horaInicio, 'HH:mm')}">09:00</time><div class="schedule-info"><strong th:text="${clientesPorId[cita.clienteId]}">Cliente</strong><small th:text="${cita.servicio}">Servicio</small></div><span class="pill d-none d-sm-inline-flex" th:classappend="${cita.estado == 'Completada'} ? 'pill-neutral' : (${cita.estado == 'En atención'} ? 'pill-sand' : 'pill-olive')" th:text="${cita.estado}">Confirmada</span></div>
+              <div class="agenda-capacity"><div><span>Ocupación diaria</span><strong th:text="${ocupacionAgenda + '%'}">67%</strong></div><div class="progress progress-soft"><div class="progress-bar" th:style="${'width:' + ocupacionAgenda + '%'}"></div></div></div>
             </section>
           </div>
           <div class="col-12 col-xl-7">

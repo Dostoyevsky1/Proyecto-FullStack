@@ -16,6 +16,10 @@ public class Membresia {
     private String planCodigo;
     private String planNombre;
     private BigDecimal precioMensual;
+    private BigDecimal precioPromocional;
+    private String cuponAplicado;
+    private Integer descuentoPorcentaje;
+    private Integer mesesDescuento;
     private LocalDate fechaInicio;
     private LocalDate fechaVencimiento;
     private String estado;
@@ -30,6 +34,14 @@ public class Membresia {
     public void setPlanNombre(String planNombre) { this.planNombre = planNombre; }
     public BigDecimal getPrecioMensual() { return precioMensual; }
     public void setPrecioMensual(BigDecimal precioMensual) { this.precioMensual = precioMensual; }
+    public BigDecimal getPrecioPromocional() { return precioPromocional; }
+    public void setPrecioPromocional(BigDecimal precioPromocional) { this.precioPromocional = precioPromocional; }
+    public String getCuponAplicado() { return cuponAplicado; }
+    public void setCuponAplicado(String cuponAplicado) { this.cuponAplicado = cuponAplicado; }
+    public Integer getDescuentoPorcentaje() { return descuentoPorcentaje; }
+    public void setDescuentoPorcentaje(Integer descuentoPorcentaje) { this.descuentoPorcentaje = descuentoPorcentaje; }
+    public Integer getMesesDescuento() { return mesesDescuento; }
+    public void setMesesDescuento(Integer mesesDescuento) { this.mesesDescuento = mesesDescuento; }
     public LocalDate getFechaInicio() { return fechaInicio; }
     public void setFechaInicio(LocalDate fechaInicio) { this.fechaInicio = fechaInicio; }
     public LocalDate getFechaVencimiento() { return fechaVencimiento; }

@@ -1,11 +1,13 @@
 package com.zambacare.data;
 
 import com.zambacare.entity.Cliente;
+import com.zambacare.entity.Cita;
 import com.zambacare.entity.Diagnostico;
 import com.zambacare.entity.EvolucionCapilar;
 import com.zambacare.entity.PlanTratamiento;
 import com.zambacare.entity.SesionTratamiento;
 import com.zambacare.repository.ClienteRepository;
+import com.zambacare.repository.CitaRepository;
 import com.zambacare.repository.DiagnosticoRepository;
 import com.zambacare.repository.EvolucionCapilarRepository;
 import com.zambacare.repository.PlanTratamientoRepository;
@@ -13,6 +15,7 @@ import com.zambacare.repository.SesionTratamientoRepository;
 import com.zambacare.service.CuentaClienteService;
 import com.zambacare.service.MembresiaService;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -22,6 +25,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 public class DataInitializer implements ApplicationRunner {
     private final ClienteRepository clienteRepository;
+    private final CitaRepository citaRepository;
     private final DiagnosticoRepository diagnosticoRepository;
     private final PlanTratamientoRepository planRepository;
     private final SesionTratamientoRepository sesionRepository;
@@ -30,6 +34,7 @@ public class DataInitializer implements ApplicationRunner {
     private final MembresiaService membresiaService;
 
     public DataInitializer(ClienteRepository clienteRepository,
+                           CitaRepository citaRepository,
                            DiagnosticoRepository diagnosticoRepository,
                            PlanTratamientoRepository planRepository,
                            SesionTratamientoRepository sesionRepository,
@@ -37,6 +42,7 @@ public class DataInitializer implements ApplicationRunner {
                            CuentaClienteService cuentaService,
                            MembresiaService membresiaService) {
         this.clienteRepository = clienteRepository;
+        this.citaRepository = citaRepository;
         this.diagnosticoRepository = diagnosticoRepository;
         this.planRepository = planRepository;
         this.sesionRepository = sesionRepository;
@@ -59,6 +65,18 @@ public class DataInitializer implements ApplicationRunner {
         Cliente alejandra = cliente("Alejandra", "Paredes", "900 000 007", "alejandra.paredes@zambacare.pe", "3C", "Rizado", "Alta", "Alta", "Fino", "Reconstrucción");
         Cliente paola = cliente("Paola", "Vega", "900 000 008", "paola.vega@zambacare.pe", "4B", "Afro", "Media", "Alta", "Grueso", "Seguimiento");
         clienteRepository.saveAll(List.of(valeria, camila, daniela, lucia, maria, ximena, alejandra, paola));
+
+        LocalDate hoy = LocalDate.now();
+        citaRepository.saveAll(List.of(
+            cita(maria.getId(), hoy, "09:00", 60, "Diagnóstico capilar", "Andrea Salazar", "Completada"),
+            cita(valeria.getId(), hoy, "10:30", 90, "Hidratación profunda", "Andrea Salazar", "En atención"),
+            cita(camila.getId(), hoy, "10:00", 60, "Control de evolución", "Rosa Medina", "Confirmada"),
+            cita(daniela.getId(), hoy, "11:30", 90, "Nutrición", "Rosa Medina", "Confirmada"),
+            cita(lucia.getId(), hoy, "13:00", 60, "Definición", "Andrea Salazar", "Confirmada"),
+            cita(ximena.getId(), hoy, "14:30", 45, "Corte de mantenimiento", "Andrea Salazar", "Confirmada"),
+            cita(alejandra.getId(), hoy, "15:00", 90, "Reconstrucción", "Rosa Medina", "Confirmada"),
+            cita(paola.getId(), hoy, "16:30", 60, "Seguimiento", "Andrea Salazar", "Por confirmar")
+        ));
 
         Diagnostico diagnostico = new Diagnostico();
         diagnostico.setClienteId(valeria.getId());
@@ -101,7 +119,7 @@ public class DataInitializer implements ApplicationRunner {
 
         cuentaService.crear(valeria.getId(), valeria.getCorreo(), "Valeria2026");
         var membresia = membresiaService.elegirPlan(valeria.getId(), "INTEGRAL");
-        membresiaService.confirmarPago(valeria.getId(), membresia.getId(), "Yape");
+        membresiaService.confirmarPago(valeria.getId(), membresia.getId(), "Yape", "");
     }
 
     private Cliente cliente(String nombres, String apellidos, String telefono, String correo, String tipo, String textura, String porosidad, String densidad, String grosor, String estado) {
@@ -147,5 +165,17 @@ public class DataInitializer implements ApplicationRunner {
         evolucion.setElasticidad(elasticidad);
         evolucion.setObservaciones(observaciones);
         return evolucion;
+    }
+
+    private Cita cita(Long clienteId, LocalDate fecha, String hora, int duracion, String servicio, String especialista, String estado) {
+        Cita cita = new Cita();
+        cita.setClienteId(clienteId);
+        cita.setFecha(fecha);
+        cita.setHoraInicio(LocalTime.parse(hora));
+        cita.setHoraFin(cita.getHoraInicio().plusMinutes(duracion));
+        cita.setServicio(servicio);
+        cita.setEspecialista(especialista);
+        cita.setEstado(estado);
+        return cita;
     }
 }

@@ -32,6 +32,10 @@ public class ClienteService {
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "No hay clientes registrados"));
     }
 
+    public boolean existePorCorreo(String correo) {
+        return correo != null && clienteRepository.findByCorreoIgnoreCase(correo.trim()).isPresent();
+    }
+
     @Transactional
     public Cliente guardar(Cliente cliente) {
         if (cliente.getFechaRegistro() == null) cliente.setFechaRegistro(LocalDate.now());

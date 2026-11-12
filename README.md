@@ -13,6 +13,9 @@ El sistema tiene dos recorridos. El especialista gestiona la información capila
 - Seguimiento con fotografías guardadas dentro del proyecto.
 - Portal del cliente con plan, evolución, historial y membresía.
 - Creación de cuenta y pago mensual simulado.
+- Validación de correos registrados con un mensaje comprensible para el usuario.
+- Campaña familiar con cupón de descuento durante los primeros tres meses.
+- Agenda diaria con capacidad máxima, horarios por especialista y estados de atención.
 - Datos iniciales cargados automáticamente desde Spring Boot.
 - Catálogo sintético de membresías mediante `List<PlanMembresiaBean>`.
 - Navegación responsive con Thymeleaf y Bootstrap.
@@ -69,6 +72,14 @@ Contraseña: Zambacare2026
 ```
 
 El botón **Entrar como cliente** abre el portal precargado de Valeria Mendoza. El botón **Crear cuenta** permite demostrar el flujo de registro, elección de membresía y pago mensual.
+
+## Campaña familiar
+
+El cupón de demostración `FAMILIAZAMBA` aplica un 20 % de descuento durante los primeros tres meses. Está pensado para que los especialistas lo compartan con familiares y se valida durante el pago mensual.
+
+## Gestión de citas
+
+La ruta `/citas` muestra la agenda diaria del local, la ocupación, los cupos disponibles y el estado de cada atención. La agenda admite hasta 12 citas activas por día y evita que una especialista tenga dos atenciones superpuestas. Las cuentas de clientes y las reservas se administran por separado, por lo que un aumento de usuarios registrados no llena automáticamente la agenda.
 
 ## Datos iniciales
 

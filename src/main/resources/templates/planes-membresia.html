@@ -6,6 +6,7 @@
       <a class="brand onboarding-brand" th:href="@{/}"><img th:src="@{/img/logo/zambacare.svg}" width="42" height="42" alt="" /><span><strong>Zambacare</strong></span></a>
       <section class="onboarding-card">
         <div class="onboarding-heading"><span class="step-indicator">2 de 3</span><h1>Elige tu membresía</h1></div>
+        <aside class="campaign-banner mb-4" aria-label="Campaña familiar"><span class="campaign-icon"><i class="bi bi-gift"></i></span><div><strong>Beneficio para familiares</strong><p><span th:text="${descuento}">20</span>% de descuento durante <span th:text="${meses}">3</span> meses con el cupón entregado por nuestros especialistas.</p></div><code th:text="${cupon}">FAMILIAZAMBA</code></aside>
         <div class="membership-grid">
           <form class="membership-option" th:each="plan : ${planes}" th:action="@{/membresia/seleccionar}" method="post">
             <input type="hidden" name="clienteId" th:value="${cliente.id}" /><input type="hidden" name="codigo" th:value="${plan.codigo}" />

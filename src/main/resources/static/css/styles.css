@@ -2769,6 +2769,123 @@ legend {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.campaign-banner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 18px;
+  border: 1px solid #d8c9a8;
+  border-radius: 14px;
+  background: #f5eedf;
+}
+.campaign-banner.compact {
+  grid-template-columns: auto 1fr;
+}
+.campaign-banner p {
+  margin: 4px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+}
+.campaign-banner code {
+  padding: 8px 11px;
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--primary);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+.campaign-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--olive-light);
+  color: var(--accent);
+}
+.agenda-toolbar {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.8fr) minmax(280px, 1.2fr);
+  align-items: end;
+  gap: 32px;
+}
+.date-filter .form-label {
+  display: block;
+}
+.capacity-summary {
+  min-width: 0;
+}
+.capacity-summary > span,
+.capacity-summary > strong {
+  display: block;
+}
+.capacity-summary > span {
+  color: var(--text-secondary);
+  font-size: 0.68rem;
+}
+.capacity-summary > strong {
+  margin-top: 3px;
+  font-size: 0.82rem;
+}
+.capacity-summary .progress,
+.agenda-capacity .progress {
+  margin: 10px 0 0;
+}
+.agenda-capacity {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.agenda-capacity > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-secondary);
+  font-size: 0.68rem;
+}
+.capacity-notice {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+  padding: 16px 18px;
+  border: 1px solid #dec99e;
+  border-radius: 13px;
+  background: #faf3e4;
+}
+.capacity-notice i {
+  color: #9d7425;
+  font-size: 1.2rem;
+}
+.capacity-notice strong,
+.capacity-notice span {
+  display: block;
+}
+.capacity-notice span {
+  margin-top: 2px;
+  color: var(--text-secondary);
+  font-size: 0.68rem;
+}
+.appointment-table td {
+  vertical-align: middle;
+}
+.appointment-table td:first-child strong,
+.appointment-table td:first-child small {
+  display: block;
+}
+.appointment-table td:first-child small {
+  color: var(--text-secondary);
+}
+.status-form {
+  display: flex;
+  min-width: 235px;
+  gap: 8px;
+}
+.pill-danger {
+  background: #f7dfdc;
+  color: #943b34;
+}
+
 @media (max-width: 991.98px) {
   .client-summary-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2804,6 +2921,13 @@ legend {
   }
   .client-products {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .agenda-toolbar,
+  .campaign-banner {
+    grid-template-columns: 1fr;
+  }
+  .campaign-banner code {
+    justify-self: start;
   }
 }
 

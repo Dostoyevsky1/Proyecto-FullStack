@@ -47,6 +47,12 @@
             ><i class="bi bi-people" aria-hidden="true"></i> Clientes</a
           >
           <a
+            th:href="@{/citas}"
+            th:classappend="${active == 'citas'} ? 'active'"
+            th:attr="aria-current=${active == 'citas' ? 'page' : null}"
+            ><i class="bi bi-calendar2-week" aria-hidden="true"></i> Citas</a
+          >
+          <a
             th:href="@{/diagnosticos/nuevo}"
             th:classappend="${active == 'diagnosticos'} ? 'active'"
             th:attr="aria-current=${active == 'diagnosticos' ? 'page' : null}"

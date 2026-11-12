@@ -6,12 +6,15 @@
       <a class="brand onboarding-brand" th:href="@{/}"><img th:src="@{/img/logo/zambacare.svg}" width="42" height="42" alt="" /><span><strong>Zambacare</strong></span></a>
       <section class="onboarding-card">
         <div class="onboarding-heading"><span class="step-indicator">3 de 3</span><h1>Pago mensual</h1></div>
+        <div class="alert alert-danger" role="alert" th:if="${error}" th:text="${error}">Cupón no válido</div>
         <div class="payment-summary"><div><span th:text="${membresia.planNombre}">Cuidado integral</span><strong th:text="${'S/ ' + membresia.precioMensual}">S/ 59.90</strong></div><small>Renovación mensual</small></div>
+        <aside class="campaign-banner compact mb-4"><span class="campaign-icon"><i class="bi bi-gift"></i></span><div><strong>Campaña familiar</strong><p><span th:text="${descuento}">20</span>% por <span th:text="${meses}">3</span> meses con <code th:text="${cupon}">FAMILIAZAMBA</code>.</p></div></aside>
         <form th:action="@{/pago}" method="post">
           <input type="hidden" name="clienteId" th:value="${cliente.id}" /><input type="hidden" name="membresiaId" th:value="${membresia.id}" />
           <label class="form-label" for="metodo">Método de pago</label><select class="form-select" id="metodo" name="metodo" required><option value="">Selecciona</option><option>Yape</option><option>Plin</option><option>Tarjeta</option></select>
           <label class="form-label mt-3" for="titular">Nombre del titular</label><input class="form-control" id="titular" th:value="${cliente.nombreCompleto}" required />
           <label class="form-label mt-3" for="operacion">Número de operación</label><input class="form-control" id="operacion" value="48261573" required />
+          <label class="form-label mt-3" for="cupon">Cupón de beneficio</label><input class="form-control text-uppercase" id="cupon" name="cupon" placeholder="Ingresa tu cupón" /><div class="form-text">Solicítalo a un especialista si eres familiar de un colaborador.</div>
           <button class="btn btn-primary w-100 mt-4" type="submit">Confirmar pago</button>
         </form>
       </section>

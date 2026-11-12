@@ -194,7 +194,17 @@ Incluye un ejemplo corto de `th:each`, `th:text` y `th:href`. Acompáñalo con u
 
 Agrega una captura del resultado `BUILD SUCCESS` y explica que la prueba carga las rutas del especialista, el registro, el pago y el portal del cliente.
 
-### 11. Resultado y trabajo pendiente
+### 11. Gestión de citas y capacidad
+
+Explica que las cuentas y las citas se administran por separado. La agenda controla un máximo de 12 atenciones activas por día, muestra los cupos disponibles y evita cruces de horario para una misma especialista. Incluye una captura del dashboard y otra de la agenda diaria.
+
+Para responder cómo se evita la sobrecarga: “El crecimiento de usuarios no llena automáticamente la agenda. Cada reserva se valida contra la capacidad diaria y la disponibilidad de la especialista. Cuando se alcanza el límite, el sistema solicita seleccionar otro horario o fecha”.
+
+### 12. Campaña familiar
+
+Describe el cupón `FAMILIAZAMBA`, que aplica un 20 % de descuento durante los primeros tres meses. Aclara que es una campaña controlada para familiares de colaboradores y que el sistema registra el cupón, el porcentaje y el importe pagado.
+
+### 13. Resultado y trabajo pendiente
 
 Resume qué partes alcanzaron el 60 % y enumera lo que se implementará después: Spring Security, roles, sesiones, autorización, renovación automática y carga de fotografías.
 
@@ -204,14 +214,14 @@ Entre 8 y 10 capturas son suficientes:
 
 1. Login con los dos tipos de acceso.
 2. Dashboard del especialista.
-3. Clientes cargados desde MySQL.
-4. Perfil con plan de tratamiento.
-5. Registro de tratamiento.
-6. Evolución antes y después.
-7. Registro del cliente.
-8. Selección de membresía y pago.
-9. Portal del cliente.
-10. Tablas en MySQL Workbench o resultado de las pruebas.
+3. Agenda diaria y control de capacidad.
+4. Clientes cargados desde la base de datos.
+5. Perfil con plan de tratamiento.
+6. Registro de tratamiento.
+7. Evolución antes y después.
+8. Registro del cliente y validación de usuario duplicado.
+9. Campaña familiar, membresía y pago.
+10. Portal del cliente o resultado de las pruebas.
 
 Cada figura debe llevar número, título y una explicación de dos o tres líneas. Evita colocar capturas sin describir qué requisito demuestran.
 

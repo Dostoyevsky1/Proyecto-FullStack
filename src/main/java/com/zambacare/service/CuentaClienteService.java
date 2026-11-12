@@ -21,6 +21,9 @@ public class CuentaClienteService {
 
     @Transactional
     public CuentaCliente crear(Long clienteId, String correo, String clave) {
+        if (existePorCorreo(correo)) {
+            throw new IllegalArgumentException("Usuario ya registrado");
+        }
         byte[] salt = new byte[16];
         new SecureRandom().nextBytes(salt);
         CuentaCliente cuenta = new CuentaCliente();
@@ -31,6 +34,10 @@ public class CuentaClienteService {
         cuenta.setFechaCreacion(LocalDateTime.now());
         cuenta.setActiva(false);
         return cuentaRepository.save(cuenta);
+    }
+
+    public boolean existePorCorreo(String correo) {
+        return correo != null && cuentaRepository.findByCorreoIgnoreCase(correo.trim()).isPresent();
     }
 
     @Transactional

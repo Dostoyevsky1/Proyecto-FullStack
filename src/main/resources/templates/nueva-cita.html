@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Nueva cita')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/sidebar :: sidebar('citas')}"></aside>
+    <div class="app-main">
+      <header th:replace="~{fragments/navbar :: navbar('Nueva cita')}"></header>
+      <main class="page-content" id="contenido">
+        <div class="page-heading"><div><a class="back-link" th:href="@{/citas(fecha=${fecha})}"><i class="bi bi-arrow-left"></i>Agenda</a><h1>Registrar cita</h1></div></div>
+        <div class="alert alert-danger" role="alert" th:if="${error}" th:text="${error}">Horario no disponible</div>
+        <form class="form-card" th:action="@{/citas}" method="post">
+          <section class="form-section">
+            <div class="section-heading"><span class="section-icon"><i class="bi bi-calendar2-plus"></i></span><div><h2>Datos de la cita</h2></div></div>
+            <div class="row g-3">
+              <div class="col-12 col-lg-6"><label class="form-label" for="clienteId">Cliente</label><select class="form-select" id="clienteId" name="clienteId" required><option value="">Selecciona un cliente</option><option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombreCompleto}">Valeria Mendoza</option></select></div>
+              <div class="col-12 col-md-6 col-lg-3"><label class="form-label" for="fecha">Fecha</label><input class="form-control" id="fecha" name="fecha" type="date" th:value="${fecha}" required /></div>
+              <div class="col-12 col-md-6 col-lg-3"><label class="form-label" for="horaInicio">Hora</label><input class="form-control" id="horaInicio" name="horaInicio" type="time" min="08:00" max="19:00" step="900" required /></div>
+              <div class="col-12 col-md-6"><label class="form-label" for="servicio">Servicio</label><select class="form-select" id="servicio" name="servicio" required><option value="">Selecciona</option><option>Diagnóstico capilar</option><option>Hidratación profunda</option><option>Nutrición</option><option>Reconstrucción</option><option>Definición</option><option>Corte de mantenimiento</option><option>Control de evolución</option></select></div>
+              <div class="col-12 col-md-6"><label class="form-label" for="especialista">Especialista</label><select class="form-select" id="especialista" name="especialista" required><option>Andrea Salazar</option><option>Rosa Medina</option><option>Carla Ruiz</option></select></div>
+              <div class="col-12 col-md-6"><label class="form-label" for="duracionMinutos">Duración estimada</label><select class="form-select" id="duracionMinutos" name="duracionMinutos" required><option value="45">45 minutos</option><option value="60">60 minutos</option><option value="90">90 minutos</option></select></div>
+              <div class="col-12"><label class="form-label" for="observaciones">Observaciones</label><textarea class="form-control" id="observaciones" name="observaciones" rows="3"></textarea></div>
+            </div>
+          </section>
+          <div class="form-actions"><a class="btn btn-light" th:href="@{/citas(fecha=${fecha})}">Cancelar</a><button class="btn btn-primary" type="submit">Registrar cita</button></div>
+        </form>
+        <footer th:replace="~{fragments/ui :: footer}"></footer>
+      </main>
+    </div>
+    <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
+  </body>
+</html>

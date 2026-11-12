@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Citas')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/sidebar :: sidebar('citas')}"></aside>
+    <div class="app-main">
+      <header th:replace="~{fragments/navbar :: navbar('Citas')}"></header>
+      <main class="page-content" id="contenido">
+        <div class="page-heading">
+          <div><h1>Agenda de citas</h1></div>
+          <div class="heading-actions"><a class="btn btn-primary" th:href="@{/citas/nueva(fecha=${fecha})}"><i class="bi bi-plus-lg" aria-hidden="true"></i>Nueva cita</a></div>
+        </div>
+        <div class="alert alert-success" role="status" th:if="${mensaje}" th:text="${mensaje}">Estado actualizado</div>
+        <section class="panel agenda-toolbar">
+          <form class="date-filter" th:action="@{/citas}" method="get"><label class="form-label" for="fechaAgenda">Fecha</label><div class="input-group"><input class="form-control" id="fechaAgenda" name="fecha" type="date" th:value="${fecha}" /><button class="btn btn-light" type="submit">Consultar</button></div></form>
+          <div class="capacity-summary"><span>Capacidad del local</span><strong th:text="${total + ' de ' + capacidad + ' citas'}">8 de 12 citas</strong><div class="progress progress-soft"><div class="progress-bar" th:style="${'width:' + ocupacion + '%'}"></div></div></div>
+        </section>
+        <section class="row g-3 my-1" aria-label="Resumen de agenda">
+          <div class="col-6 col-xl-3"><article class="stat-card"><div class="stat-top"><span class="stat-number" th:text="${total}">8</span><span class="stat-icon"><i class="bi bi-calendar2-week"></i></span></div><p class="stat-label">Citas del día</p></article></div>
+          <div class="col-6 col-xl-3"><article class="stat-card"><div class="stat-top"><span class="stat-number" th:text="${confirmadas}">5</span><span class="stat-icon"><i class="bi bi-check2-circle"></i></span></div><p class="stat-label">Confirmadas</p></article></div>
+          <div class="col-6 col-xl-3"><article class="stat-card"><div class="stat-top"><span class="stat-number" th:text="${enAtencion}">1</span><span class="stat-icon"><i class="bi bi-hourglass-split"></i></span></div><p class="stat-label">En atención</p></article></div>
+          <div class="col-6 col-xl-3"><article class="stat-card"><div class="stat-top"><span class="stat-number" th:text="${disponibles}">4</span><span class="stat-icon"><i class="bi bi-clock"></i></span></div><p class="stat-label">Cupos disponibles</p></article></div>
+        </section>
+        <div class="capacity-notice" th:if="${ocupacion >= 80}"><i class="bi bi-exclamation-triangle"></i><div><strong>Agenda cerca del límite</strong><span>Los nuevos registros deberán utilizar horarios disponibles u otra fecha.</span></div></div>
+        <section class="panel mt-4">
+          <div class="panel-header"><h2>Atenciones programadas</h2><span class="pill pill-neutral" th:text="${#temporals.format(fecha, 'dd/MM/yyyy')}">12/11/2026</span></div>
+          <div class="table-responsive" th:if="${!#lists.isEmpty(citas)}">
+            <table class="table appointment-table">
+              <thead><tr><th>Horario</th><th>Cliente</th><th>Servicio</th><th>Especialista</th><th>Estado</th><th>Actualizar</th></tr></thead>
+              <tbody><tr th:each="cita : ${citas}"><td><strong th:text="${#temporals.format(cita.horaInicio, 'HH:mm')}">09:00</strong><small th:text="${#temporals.format(cita.horaFin, 'HH:mm')}">10:00</small></td><td th:text="${clientesPorId[cita.clienteId]}">Cliente</td><td th:text="${cita.servicio}">Servicio</td><td th:text="${cita.especialista}">Especialista</td><td><span class="pill" th:classappend="${cita.estado == 'Completada'} ? 'pill-neutral' : (${cita.estado == 'En atención'} ? 'pill-sand' : (${cita.estado == 'Cancelada'} ? 'pill-danger' : 'pill-olive'))" th:text="${cita.estado}">Confirmada</span></td><td><form class="status-form" th:action="@{/citas/{id}/estado(id=${cita.id})}" method="post"><input type="hidden" name="fecha" th:value="${fecha}" /><select class="form-select form-select-sm" name="estado" th:aria-label="${'Cambiar estado de la cita de ' + clientesPorId[cita.clienteId]}"><option th:selected="${cita.estado == 'Confirmada'}">Confirmada</option><option th:selected="${cita.estado == 'En atención'}">En atención</option><option th:selected="${cita.estado == 'Completada'}">Completada</option><option th:selected="${cita.estado == 'Cancelada'}">Cancelada</option></select><button class="btn btn-light btn-sm" type="submit">Guardar</button></form></td></tr></tbody>
+            </table>
+          </div>
+          <div class="empty-state compact" th:if="${#lists.isEmpty(citas)}"><i class="bi bi-calendar2"></i><h2>No hay citas para esta fecha</h2><a class="btn btn-primary" th:href="@{/citas/nueva(fecha=${fecha})}">Registrar cita</a></div>
+        </section>
+        <footer th:replace="~{fragments/ui :: footer}"></footer>
+      </main>
+    </div>
+    <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
+  </body>
+</html>
