@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Membresía')}"></head>
+  <body class="onboarding-page">
+    <main class="onboarding-shell wide">
+      <a class="brand onboarding-brand" th:href="@{/}"><img th:src="@{/img/logo/zambacare.svg}" width="42" height="42" alt="" /><span><strong>Zambacare</strong></span></a>
+      <section class="onboarding-card">
+        <div class="onboarding-heading"><span class="step-indicator">2 de 3</span><h1>Elige tu membresía</h1></div>
+        <div class="membership-grid">
+          <form class="membership-option" th:each="plan : ${planes}" th:action="@{/membresia/seleccionar}" method="post">
+            <input type="hidden" name="clienteId" th:value="${cliente.id}" /><input type="hidden" name="codigo" th:value="${plan.codigo}" />
+            <span class="membership-icon"><i class="bi bi-flower2"></i></span><h2 th:text="${plan.nombre}">Seguimiento mensual</h2><p th:text="${plan.descripcion}">Descripción</p><strong class="membership-price"><span th:text="${'S/ ' + plan.precio}">S/ 39.90</span><small>/ mes</small></strong><button class="btn btn-primary w-100" type="submit">Elegir plan</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

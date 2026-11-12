@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Pago confirmado')}"></head>
+  <body class="onboarding-page">
+    <main class="onboarding-shell">
+      <section class="onboarding-card confirmation-card"><span class="confirmation-icon"><i class="bi bi-check-lg"></i></span><h1>Pago confirmado</h1><p>Tu membresía está activa.</p><dl class="payment-details"><div><dt>Operación</dt><dd th:text="${pago.codigoOperacion}">ZC-12345678</dd></div><div><dt>Monto</dt><dd th:text="${'S/ ' + pago.monto}">S/ 59.90</dd></div><div><dt>Método</dt><dd th:text="${pago.metodo}">Yape</dd></div></dl><a class="btn btn-primary w-100" th:href="@{/portal/cliente(clienteId=${cliente.id})}">Entrar a mi cuenta</a></section>
+    </main>
+  </body>
+</html>

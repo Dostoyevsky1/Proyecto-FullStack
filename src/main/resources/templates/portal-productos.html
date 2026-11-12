@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Mis productos')}"></head>
+  <body>
+    <aside th:replace="~{fragments/client-sidebar :: sidebar('productos', ${cliente})}"></aside>
+    <div class="app-main"><header th:replace="~{fragments/client-navbar :: navbar('Mis productos', ${cliente})}"></header><main class="page-content">
+      <div class="page-heading"><div><h1>Mis productos</h1></div></div>
+      <section class="products-grid client-products">
+        <article class="product-card"><div class="product-photo"><img th:src="@{/img/productos/shampoo.png}" alt="Shampoo Limpieza suave" /><span class="pill pill-olive">Rutina actual</span></div><div class="product-body"><small class="product-brand">RAÍZ</small><h2 class="product-name">Shampoo Limpieza suave</h2><p class="product-benefit">Limpieza equilibrada sin retirar la hidratación natural.</p></div></article>
+        <article class="product-card"><div class="product-photo"><img th:src="@{/img/productos/mascarilla.png}" alt="Mascarilla Hidratación" /><span class="pill pill-olive">Rutina actual</span></div><div class="product-body"><small class="product-brand">RAÍZ</small><h2 class="product-name">Mascarilla Hidratación</h2><p class="product-benefit">Apoya la retención de humedad y mejora la suavidad.</p></div></article>
+        <article class="product-card"><div class="product-photo"><img th:src="@{/img/productos/leave-in.png}" alt="Leave-in Ligereza" /><span class="pill pill-olive">Rutina actual</span></div><div class="product-body"><small class="product-brand">RAÍZ</small><h2 class="product-name">Leave-in Ligereza</h2><p class="product-benefit">Facilita la definición sin aportar peso excesivo.</p></div></article>
+      </section>
+    </main></div>
+  </body>
+</html>

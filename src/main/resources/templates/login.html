@@ -85,10 +85,12 @@
               <i class="bi bi-arrow-right" aria-hidden="true"></i>
             </button>
           </form>
+          <div class="login-client-actions">
+            <a class="btn btn-light" th:href="@{/portal/cliente}">Entrar como cliente</a>
+            <a th:href="@{/registro}">Crear cuenta</a>
+          </div>
         </div>
-        <small class="login-footer"
-          >Zambacare © 2026 · Zamba Pisando Tierra</small
-        >
+        <small class="login-footer">Zambacare © 2026</small>
       </section>
     </main>
     <div
@@ -113,7 +115,7 @@
           </div>
           <form
             data-demo-form="toast"
-            data-success-message="Solicitud simulada. No se ha enviado ningún correo."
+            data-success-message="Solicitud preparada correctamente."
             novalidate
           >
             <div class="modal-body">

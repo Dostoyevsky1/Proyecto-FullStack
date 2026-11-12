@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Mi rutina')}"></head>
+  <body>
+    <aside th:replace="~{fragments/client-sidebar :: sidebar('rutina', ${cliente})}"></aside>
+    <div class="app-main"><header th:replace="~{fragments/client-navbar :: navbar('Mi rutina', ${cliente})}"></header><main class="page-content">
+      <div class="page-heading"><div><h1>Mi rutina</h1></div></div>
+      <section class="panel"><div class="week-grid"><article class="day-card active"><span>Lunes</span><i class="bi bi-droplet"></i><h2>Lavado e hidratación</h2><p>Shampoo suave y mascarilla hidratante.</p></article><article class="day-card"><span>Martes</span><i class="bi bi-stars"></i><h2>Definición</h2><p>Leave-in ligero y gel de fijación suave.</p></article><article class="day-card"><span>Miércoles</span><i class="bi bi-wind"></i><h2>Refresh</h2><p>Agua y una cantidad ligera de leave-in.</p></article><article class="day-card"><span>Jueves</span><i class="bi bi-moon-stars"></i><h2>Descanso</h2><p>Protección de satén durante la noche.</p></article><article class="day-card"><span>Viernes</span><i class="bi bi-wind"></i><h2>Refresh</h2><p>Reactivar la definición sin manipular en seco.</p></article><article class="day-card"><span>Sábado</span><i class="bi bi-flower2"></i><h2>Tratamiento</h2><p>Hidratación profunda durante 30 minutos.</p></article><article class="day-card"><span>Domingo</span><i class="bi bi-moon-stars"></i><h2>Descanso</h2><p>Mantener el cabello protegido.</p></article></div></section>
+      <section class="panel mt-4"><div class="panel-header"><h2>Indicaciones</h2></div><ul class="clean-list"><li>Evitar el exceso de calor.</li><li>Dormir con protección de satén.</li><li>No manipular el cabello en seco.</li><li>Mantener una hidratación constante.</li></ul></section>
+    </main></div>
+  </body>
+</html>

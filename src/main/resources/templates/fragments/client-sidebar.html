@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <aside th:fragment="sidebar(active, cliente)" class="offcanvas-lg offcanvas-start sidebar client-sidebar" tabindex="-1" id="sidebar" aria-labelledby="clientSidebarTitle">
+      <div class="offcanvas-header"><span id="clientSidebarTitle" class="fw-semibold">Mi espacio</span><button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebar" aria-label="Cerrar menú"></button></div>
+      <div class="offcanvas-body">
+        <a class="brand" th:href="@{/portal/cliente(clienteId=${cliente.id})}"><img th:src="@{/img/logo/zambacare.svg}" width="43" height="43" alt="" /><span><strong>Zambacare</strong><small>Mi seguimiento</small></span></a>
+        <div class="client-mini-profile"><span class="avatar avatar-olive" th:text="${cliente.iniciales}">VM</span><div><strong th:text="${cliente.nombreCompleto}">Valeria Mendoza</strong><small th:text="${cliente.tipoCabello + ' · ' + cliente.porosidad}">3B · Alta</small></div></div>
+        <nav class="side-nav" aria-label="Menú del cliente">
+          <a th:href="@{/portal/cliente(clienteId=${cliente.id})}" th:classappend="${active == 'inicio'} ? 'active'"><i class="bi bi-house"></i>Inicio</a>
+          <a th:href="@{/portal/cliente/plan(clienteId=${cliente.id})}" th:classappend="${active == 'plan'} ? 'active'"><i class="bi bi-clipboard2-check"></i>Mi plan</a>
+          <a th:href="@{/portal/cliente/evolucion(clienteId=${cliente.id})}" th:classappend="${active == 'evolucion'} ? 'active'"><i class="bi bi-graph-up-arrow"></i>Mi evolución</a>
+          <a th:href="@{/portal/cliente/historial(clienteId=${cliente.id})}" th:classappend="${active == 'historial'} ? 'active'"><i class="bi bi-clock-history"></i>Mi historial</a>
+          <a th:href="@{/portal/cliente/rutina(clienteId=${cliente.id})}" th:classappend="${active == 'rutina'} ? 'active'"><i class="bi bi-calendar2-week"></i>Mi rutina</a>
+          <a th:href="@{/portal/cliente/productos(clienteId=${cliente.id})}" th:classappend="${active == 'productos'} ? 'active'"><i class="bi bi-bag-heart"></i>Mis productos</a>
+          <a th:href="@{/portal/cliente/membresia(clienteId=${cliente.id})}" th:classappend="${active == 'membresia'} ? 'active'"><i class="bi bi-credit-card"></i>Membresía</a>
+        </nav>
+        <nav class="side-nav sidebar-bottom"><a th:href="@{/}"><i class="bi bi-box-arrow-left"></i>Cerrar sesión</a></nav>
+      </div>
+    </aside>
+  </body>
+</html>

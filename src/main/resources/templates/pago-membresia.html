@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Pago mensual')}"></head>
+  <body class="onboarding-page">
+    <main class="onboarding-shell">
+      <a class="brand onboarding-brand" th:href="@{/}"><img th:src="@{/img/logo/zambacare.svg}" width="42" height="42" alt="" /><span><strong>Zambacare</strong></span></a>
+      <section class="onboarding-card">
+        <div class="onboarding-heading"><span class="step-indicator">3 de 3</span><h1>Pago mensual</h1></div>
+        <div class="payment-summary"><div><span th:text="${membresia.planNombre}">Cuidado integral</span><strong th:text="${'S/ ' + membresia.precioMensual}">S/ 59.90</strong></div><small>Renovación mensual</small></div>
+        <form th:action="@{/pago}" method="post">
+          <input type="hidden" name="clienteId" th:value="${cliente.id}" /><input type="hidden" name="membresiaId" th:value="${membresia.id}" />
+          <label class="form-label" for="metodo">Método de pago</label><select class="form-select" id="metodo" name="metodo" required><option value="">Selecciona</option><option>Yape</option><option>Plin</option><option>Tarjeta</option></select>
+          <label class="form-label mt-3" for="titular">Nombre del titular</label><input class="form-control" id="titular" th:value="${cliente.nombreCompleto}" required />
+          <label class="form-label mt-3" for="operacion">Número de operación</label><input class="form-control" id="operacion" value="48261573" required />
+          <button class="btn btn-primary w-100 mt-4" type="submit">Confirmar pago</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

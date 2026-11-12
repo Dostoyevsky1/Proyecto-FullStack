@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Membresía')}"></head>
+  <body>
+    <aside th:replace="~{fragments/client-sidebar :: sidebar('membresia', ${cliente})}"></aside>
+    <div class="app-main"><header th:replace="~{fragments/client-navbar :: navbar('Membresía', ${cliente})}"></header><main class="page-content">
+      <div class="page-heading"><div><h1>Membresía</h1></div></div>
+      <section class="membership-status panel" th:if="${membresia != null}"><span class="membership-icon"><i class="bi bi-credit-card"></i></span><div><span class="pill pill-olive" th:text="${membresia.estado}">Activa</span><h2 th:text="${membresia.planNombre}">Cuidado integral</h2><p>Renovación mensual</p></div><strong class="membership-price"><span th:text="${'S/ ' + membresia.precioMensual}">S/ 59.90</span><small>/ mes</small></strong></section>
+      <section class="panel mt-4"><div class="panel-header"><h2>Pagos</h2></div><div class="table-responsive"><table class="table"><thead><tr><th>Fecha</th><th>Operación</th><th>Método</th><th>Monto</th><th>Estado</th></tr></thead><tbody><tr th:each="pago : ${pagos}"><td th:text="${#temporals.format(pago.fecha, 'dd/MM/yyyy')}">11/11/2026</td><td th:text="${pago.codigoOperacion}">ZC-12345678</td><td th:text="${pago.metodo}">Yape</td><td th:text="${'S/ ' + pago.monto}">S/ 59.90</td><td><span class="pill pill-olive" th:text="${pago.estado}">Pagado</span></td></tr></tbody></table></div></section>
+    </main></div>
+  </body>
+</html>

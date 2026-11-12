@@ -46,8 +46,7 @@
         const modal = form.closest(".modal");
         if (modal) bootstrap.Modal.getOrCreateInstance(modal).hide();
         showToast(
-          form.dataset.successMessage ||
-            "Datos preparados correctamente. Acción simulada.",
+          form.dataset.successMessage || "Datos preparados correctamente.",
         );
       }
     });

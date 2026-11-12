@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Nuevo plan')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/sidebar :: sidebar('tratamientos')}"></aside>
+    <div class="app-main">
+      <header th:replace="~{fragments/navbar :: navbar('Nuevo plan')}"></header>
+      <main class="page-content" id="contenido">
+        <div class="page-heading"><div><h1>Nuevo plan de tratamiento</h1><p th:text="${cliente.nombreCompleto}">Valeria Mendoza</p></div></div>
+        <form class="panel" th:action="@{/planes}" th:object="${plan}" method="post">
+          <input type="hidden" th:field="*{clienteId}" />
+          <div class="row g-3">
+            <div class="col-12"><label class="form-label" for="nombre">Nombre del plan</label><input class="form-control" id="nombre" th:field="*{nombre}" required placeholder="Hidratación y definición" /></div>
+            <div class="col-12"><label class="form-label" for="objetivo">Objetivo</label><textarea class="form-control" id="objetivo" th:field="*{objetivo}" rows="4" required></textarea></div>
+            <div class="col-12 col-md-4"><label class="form-label" for="duracion">Duración por sesión</label><input class="form-control" id="duracion" type="number" min="15" step="15" th:field="*{duracionEstimadaMinutos}" required /></div>
+            <div class="col-12 col-md-4"><label class="form-label" for="totalSesiones">Total de sesiones</label><input class="form-control" id="totalSesiones" type="number" min="1" max="24" th:field="*{totalSesiones}" required /></div>
+            <div class="col-12 col-md-4"><label class="form-label" for="proximaSesion">Próxima sesión</label><input class="form-control" id="proximaSesion" type="date" th:field="*{proximaSesion}" required /></div>
+          </div>
+          <div class="form-actions"><a class="btn btn-light" th:href="@{/clientes/perfil/{id}(id=${cliente.id})}">Cancelar</a><button class="btn btn-primary" type="submit">Crear plan</button></div>
+        </form>
+        <footer th:replace="~{fragments/ui :: footer}"></footer>
+      </main>
+    </div>
+    <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
+  </body>
+</html>

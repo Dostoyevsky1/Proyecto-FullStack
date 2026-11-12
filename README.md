@@ -1,49 +1,86 @@
 # Zambacare
 
-Zambacare es una propuesta de sistema web para **Zamba Pisando Tierra**, pensada para acompañar la atención y el seguimiento capilar de cada cliente de una manera clara, cercana y ordenada.
+Zambacare es un sistema web de gestión y seguimiento capilar. El segundo avance conecta la interfaz con un backend en Spring Boot y una base de datos MySQL para administrar clientes, diagnósticos, planes de tratamiento, sesiones, evolución fotográfica y membresías mensuales.
 
-La aplicación permite recorrer visualmente el proceso completo de atención: desde el registro del cliente y su diagnóstico capilar hasta los tratamientos realizados, la evolución mediante fotografías, la rutina personalizada y los productos recomendados. El contenido está especialmente orientado al cuidado del cabello ondulado, rizado, afro y liso.
+El sistema tiene dos recorridos. El especialista gestiona la información capilar y registra cada atención. El cliente crea su cuenta, realiza un pago mensual simulado y consulta su plan, los tiempos estimados, su historial y las comparaciones de antes y después.
 
-## ¿Cómo funciona?
+## Funciones implementadas
 
-Al ingresar se muestra una pantalla de acceso con credenciales de demostración. Después del inicio de sesión, el usuario llega al panel principal, donde puede revisar la agenda del día y consultar información general.
+- Registro y consulta de clientes desde MySQL.
+- Diagnósticos capilares asociados a un cliente.
+- Planes con objetivo, sesiones y duración estimada.
+- Registro de tratamientos e historial de servicios.
+- Seguimiento con fotografías guardadas dentro del proyecto.
+- Portal del cliente con plan, evolución, historial y membresía.
+- Creación de cuenta y pago mensual simulado.
+- Datos iniciales cargados automáticamente desde Spring Boot.
+- Catálogo sintético de membresías mediante `List<PlanMembresiaBean>`.
+- Navegación responsive con Thymeleaf y Bootstrap.
 
-Desde el menú lateral se puede navegar por las principales secciones:
+## Tecnologías
 
-- Clientes y perfiles capilares.
-- Diagnósticos y resultados.
-- Historial de servicios y registro de tratamientos.
-- Seguimiento de la evolución capilar.
-- Rutinas personalizadas.
-- Productos recomendados.
+- Java 17 o superior
+- Spring Boot 3
+- Spring MVC
+- Spring Data JPA
+- Thymeleaf
+- MySQL
+- Bootstrap 5.3
+- JavaScript Vanilla
+- Maven
 
-Los formularios, filtros, modales y mensajes permiten simular el uso de un sistema real. Este primer avance está centrado únicamente en la experiencia visual, por lo que utiliza datos ficticios y todavía no almacena información en una base de datos.
+## Preparar MySQL
 
-## Acceso de demostración
+Crea una base de datos llamada `zambacare`:
+
+```sql
+CREATE DATABASE zambacare CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
+
+La aplicación utiliza estas variables:
+
+```text
+DB_URL=jdbc:mysql://localhost:3306/zambacare?serverTimezone=America/Lima
+DB_USERNAME=root
+DB_PASSWORD=tu_contraseña
+```
+
+En PowerShell puedes configurarlas antes de iniciar:
+
+```powershell
+$env:DB_URL="jdbc:mysql://localhost:3306/zambacare?serverTimezone=America/Lima"
+$env:DB_USERNAME="root"
+$env:DB_PASSWORD="tu_contraseña"
+.\mvnw.cmd spring-boot:run
+```
+
+Luego abre [http://localhost:8080](http://localhost:8080).
+
+## Accesos para la exposición
+
+Especialista:
 
 ```text
 Correo: andrea.salazar@zambacare.pe
 Contraseña: Zambacare2026
 ```
 
-## Tecnologías utilizadas
+El botón **Entrar como cliente** abre el portal precargado de Valeria Mendoza. El botón **Crear cuenta** permite demostrar el flujo de registro, elección de membresía y pago mensual.
 
-El proyecto utiliza Java 17, Spring Boot 3, Spring MVC, Thymeleaf, HTML5, CSS3, Bootstrap 5 y JavaScript. Spring Boot se encarga de iniciar la aplicación, servir las vistas y manejar las rutas de navegación.
+## Datos iniciales
 
-## Ejecutar el proyecto
+Cuando la base está vacía, `DataInitializer` registra ocho clientes y el seguimiento completo de Valeria Mendoza. Al reiniciar la aplicación, los registros no se duplican.
 
-En Windows:
+## Pruebas
 
 ```powershell
-.\mvnw.cmd spring-boot:run
+.\mvnw.cmd test
 ```
 
-En Linux o macOS:
+Las pruebas cargan el contexto de Spring y verifican las rutas principales con una base aislada de prueba. La aplicación normal utiliza MySQL.
 
-```bash
-./mvnw spring-boot:run
-```
+## Alcance pendiente
 
-Luego abre [http://localhost:8080](http://localhost:8080) en el navegador.
+El acceso todavía no protege las rutas. Spring Security, roles reales, sesiones, recuperación de contraseña y autorización según el estado de la membresía se implementarán en el avance final.
 
-El repositorio también incluye un `Dockerfile` para desplegar la aplicación como un servicio web en Render.
+La guía para preparar la exposición y el apartado de desarrollo del informe está en [GUIA_EXPOSICION_E_INFORME.md](GUIA_EXPOSICION_E_INFORME.md).

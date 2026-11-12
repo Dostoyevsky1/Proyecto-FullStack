@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Mi inicio')}"></head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <aside th:replace="~{fragments/client-sidebar :: sidebar('inicio', ${cliente})}"></aside>
+    <div class="app-main">
+      <header th:replace="~{fragments/client-navbar :: navbar('Mi inicio', ${cliente})}"></header>
+      <main class="page-content" id="contenido">
+        <div class="page-heading"><div><h1 th:text="${'Hola, ' + cliente.nombres}">Hola, Valeria</h1></div></div>
+        <section class="client-welcome" th:if="${plan != null}"><div><span class="pill pill-olive" th:text="${plan.estado}">En curso</span><h2 th:text="${plan.nombre}">Hidratación y definición</h2><p th:text="${plan.objetivo}">Objetivo</p></div><div class="progress-ring" th:style="${'--progress:' + plan.porcentaje}"><span th:text="${plan.porcentaje + '%'}">50%</span></div></section>
+        <section class="client-summary-grid" th:if="${plan != null}"><article><i class="bi bi-calendar3"></i><span>Próxima sesión</span><strong th:text="${#temporals.format(plan.proximaSesion, 'dd MMM yyyy')}">18 nov 2026</strong></article><article><i class="bi bi-clock"></i><span>Tiempo estimado</span><strong th:text="${plan.duracionEstimadaMinutos + ' minutos'}">90 minutos</strong></article><article><i class="bi bi-check2-circle"></i><span>Sesiones</span><strong th:text="${plan.sesionesCompletadas + ' de ' + plan.totalSesiones}">3 de 6</strong></article><article><i class="bi bi-credit-card"></i><span>Membresía</span><strong th:text="${membresia != null ? membresia.estado : 'Pendiente'}">Activa</strong></article></section>
+        <div class="row g-4">
+          <div class="col-12 col-xl-7"><section class="panel h-100"><div class="panel-header"><h2>Últimos tratamientos</h2><a th:href="@{/portal/cliente/historial(clienteId=${cliente.id})}">Ver historial</a></div><div class="service-row" th:each="sesion, estado : ${sesiones}" th:if="${estado.index < 3}"><time th:text="${#temporals.format(sesion.fecha, 'dd/MM/yyyy')}">18/09/2026</time><div><strong th:text="${sesion.servicio}">Hidratación</strong><small th:text="${sesion.resultado}">Resultado</small></div></div></section></div>
+          <div class="col-12 col-xl-5"><section class="panel h-100"><div class="panel-header"><h2>Último progreso</h2><a th:href="@{/portal/cliente/evolucion(clienteId=${cliente.id})}">Ver evolución</a></div><article class="latest-evolution" th:if="${ultimaEvolucion != null}"><img th:src="${ultimaEvolucion.imagenDespues}" alt="Último registro de evolución" /><div><strong th:text="${#temporals.format(ultimaEvolucion.fecha, 'MMMM yyyy')}">Septiembre 2026</strong><p th:text="${ultimaEvolucion.observaciones}">Observaciones</p></div></article></section></div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

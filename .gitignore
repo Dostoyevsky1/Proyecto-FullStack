@@ -3,6 +3,8 @@
 *.iml
 *.log
 /.tools/
+/.maven-home/
+/.codex-ppt-build/
 /.verification/
 /.github/modernize/
 /frontend-design/

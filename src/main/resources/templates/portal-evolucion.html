@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Mi evolución')}"></head>
+  <body>
+    <aside th:replace="~{fragments/client-sidebar :: sidebar('evolucion', ${cliente})}"></aside>
+    <div class="app-main"><header th:replace="~{fragments/client-navbar :: navbar('Mi evolución', ${cliente})}"></header><main class="page-content">
+      <div class="page-heading"><div><h1>Mi evolución</h1></div></div>
+      <section class="evolution-list"><article class="panel evolution-record" th:each="item : ${evoluciones}"><div class="evolution-record-head"><div><h2 th:text="${#temporals.format(item.fecha, 'MMMM yyyy')}">Septiembre 2026</h2><p th:text="${item.observaciones}">Observaciones</p></div></div><figure class="comparison-image evolution-comparison"><img th:src="${item.imagenAntes}" alt="Comparación del antes y después del tratamiento" /><span class="before-label">Antes</span><span class="after-label">Después</span></figure><div class="metric-grid"><div><span>Hidratación</span><strong th:text="${item.hidratacion + '%'}">82%</strong></div><div><span>Definición</span><strong th:text="${item.definicion + '%'}">86%</strong></div><div><span>Control de frizz</span><strong th:text="${100 - item.frizz + '%'}">76%</strong></div><div><span>Elasticidad</span><strong th:text="${item.elasticidad + '%'}">80%</strong></div></div></article></section>
+    </main></div>
+  </body>
+</html>

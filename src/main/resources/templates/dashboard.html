@@ -7,43 +7,21 @@
     <div class="app-main">
       <header th:replace="~{fragments/navbar :: navbar('Dashboard')}"></header>
       <main class="page-content" id="contenido">
-        <div class="page-heading">
-          <div>
-            <h1>Buenos días, Andrea</h1>
-          </div>
-        </div>
+        <div class="page-heading"><div><h1>Buenos días, Andrea</h1></div></div>
         <section class="welcome-banner" aria-labelledby="welcomeTitle">
-          <div class="welcome-copy">
-            <h2 id="welcomeTitle">Tienes 4 atenciones en tu agenda.</h2>
-          </div>
-          <img
-            class="welcome-illustration"
-            th:src="@{/img/dashboard-agenda.svg}"
-            width="600"
-            height="320"
-            alt=""
-          />
+          <div class="welcome-copy"><h2 id="welcomeTitle">Tienes 4 atenciones en tu agenda.</h2></div>
+          <img class="welcome-illustration" th:src="@{/img/dashboard-agenda.svg}" width="600" height="320" alt="" />
         </section>
-        <section class="row g-3 mb-4" aria-label="Indicadores de demostración">
+        <section class="row g-3 mb-4" aria-label="Resumen">
           <div class="col-6">
             <article class="stat-card">
-              <div class="stat-top">
-                <span class="stat-number">248</span
-                ><span class="stat-icon"
-                  ><i class="bi bi-people" aria-hidden="true"></i
-                ></span>
-              </div>
+              <div class="stat-top"><span class="stat-number" th:text="${totalClientes}">8</span><span class="stat-icon"><i class="bi bi-people" aria-hidden="true"></i></span></div>
               <p class="stat-label">Clientes registrados</p>
             </article>
           </div>
           <div class="col-6">
             <article class="stat-card">
-              <div class="stat-top">
-                <span class="stat-number">54</span
-                ><span class="stat-icon"
-                  ><i class="bi bi-clipboard2-pulse" aria-hidden="true"></i
-                ></span>
-              </div>
+              <div class="stat-top"><span class="stat-number" th:text="${totalDiagnosticos}">1</span><span class="stat-icon"><i class="bi bi-clipboard2-pulse" aria-hidden="true"></i></span></div>
               <p class="stat-label">Diagnósticos realizados</p>
             </article>
           </div>
@@ -51,105 +29,34 @@
         <div class="row g-4">
           <div class="col-12">
             <section class="panel h-100">
-              <div class="panel-header">
-                <div>
-                  <h2>Agenda de hoy</h2>
-                </div>
-              </div>
-              <div class="schedule-item">
-                <time class="schedule-time">09:00</time>
-                <div class="schedule-info">
-                  <strong>María Fernanda López</strong
-                  ><small>Diagnóstico capilar</small>
-                </div>
-                <span class="pill pill-olive d-none d-sm-inline-flex"
-                  >Confirmada</span
-                >
-              </div>
-              <div class="schedule-item">
-                <time class="schedule-time">10:30</time>
-                <div class="schedule-info">
-                  <strong>Valeria Torres</strong
-                  ><small>Tratamiento hidratante</small>
-                </div>
-                <span class="pill pill-olive d-none d-sm-inline-flex"
-                  >Confirmada</span
-                >
-              </div>
-              <div class="schedule-item">
-                <time class="schedule-time">12:00</time>
-                <div class="schedule-info">
-                  <strong>Camila Mendoza</strong
-                  ><small>Control de evolución</small>
-                </div>
-                <span class="pill pill-sand d-none d-sm-inline-flex"
-                  >Por confirmar</span
-                >
-              </div>
-              <div class="schedule-item">
-                <time class="schedule-time">15:00</time>
-                <div class="schedule-info">
-                  <strong>Lucía Ramírez</strong><small>Definición</small>
-                </div>
-                <span class="pill pill-olive d-none d-sm-inline-flex"
-                  >Confirmada</span
-                >
-              </div>
+              <div class="panel-header"><h2>Agenda de hoy</h2></div>
+              <div class="schedule-item"><time class="schedule-time">09:00</time><div class="schedule-info"><strong>María Fernanda López</strong><small>Diagnóstico capilar</small></div><span class="pill pill-olive d-none d-sm-inline-flex">Confirmada</span></div>
+              <div class="schedule-item"><time class="schedule-time">10:30</time><div class="schedule-info"><strong>Valeria Mendoza</strong><small>Tratamiento hidratante</small></div><span class="pill pill-olive d-none d-sm-inline-flex">Confirmada</span></div>
+              <div class="schedule-item"><time class="schedule-time">12:00</time><div class="schedule-info"><strong>Camila Torres</strong><small>Control de evolución</small></div><span class="pill pill-sand d-none d-sm-inline-flex">Por confirmar</span></div>
+              <div class="schedule-item"><time class="schedule-time">15:00</time><div class="schedule-info"><strong>Lucía Fernández</strong><small>Definición</small></div><span class="pill pill-olive d-none d-sm-inline-flex">Confirmada</span></div>
             </section>
           </div>
           <div class="col-12 col-xl-7">
             <section class="panel h-100">
-              <div class="panel-header">
-                <h2>Clientes recientes</h2>
-              </div>
+              <div class="panel-header"><h2>Clientes recientes</h2></div>
               <div class="recent-list">
-                <a class="recent-client" th:href="@{/clientes/perfil}"
-                  ><span class="avatar avatar-olive" aria-hidden="true">VM</span
-                  ><strong>Valeria Mendoza</strong><small>Rizado 3B</small></a
-                ><a class="recent-client" th:href="@{/clientes/perfil}"
-                  ><span class="avatar avatar-lilac" aria-hidden="true">CT</span
-                  ><strong>Camila Torres</strong><small>Ondulado 2C</small></a
-                ><a class="recent-client" th:href="@{/clientes/perfil}"
-                  ><span class="avatar avatar-staff" aria-hidden="true">DR</span
-                  ><strong>Daniela Ramos</strong><small>Afro 4A</small></a
-                ><a class="recent-client" th:href="@{/clientes/perfil}"
-                  ><span class="avatar avatar-rose" aria-hidden="true">LF</span
-                  ><strong>Lucía Fernández</strong><small>Rizado 3A</small></a
-                >
+                <a class="recent-client" th:each="cliente, estado : ${clientes}" th:if="${estado.index < 4}" th:href="@{/clientes/perfil/{id}(id=${cliente.id})}">
+                  <span class="avatar avatar-olive" th:text="${cliente.iniciales}">VM</span><strong th:text="${cliente.nombreCompleto}">Valeria Mendoza</strong><small th:text="${cliente.textura + ' ' + cliente.tipoCabello}">Rizado 3B</small>
+                </a>
               </div>
             </section>
           </div>
           <div class="col-12 col-xl-5">
             <section class="panel h-100">
-              <div class="panel-header">
-                <h2>Próximos seguimientos</h2>
-                <i class="bi bi-calendar2-check" aria-hidden="true"></i>
-              </div>
-              <div class="followup-row">
-                <span class="avatar avatar-olive" aria-hidden="true">VM</span>
-                <div>
-                  <strong>Valeria Mendoza</strong
-                  ><small>Hidratación y definición</small>
-                </div>
-                <a class="pill pill-olive" th:href="@{/seguimiento/evolucion}"
-                  >02 oct.
-                  <i class="bi bi-arrow-up-right" aria-hidden="true"></i
-                ></a>
-              </div>
-              <div class="followup-row">
-                <span class="avatar avatar-staff" aria-hidden="true">DR</span>
-                <div>
-                  <strong>Daniela Ramos</strong><small>Control de rutina</small>
-                </div>
-                <span class="pill pill-sand">05 oct.</span>
-              </div>
+              <div class="panel-header"><h2>Próximos seguimientos</h2><i class="bi bi-calendar2-check" aria-hidden="true"></i></div>
+              <div class="followup-row"><span class="avatar avatar-olive">VM</span><div><strong>Valeria Mendoza</strong><small>Hidratación y definición</small></div><a class="pill pill-olive" th:href="@{/seguimiento/evolucion}">18 nov.</a></div>
+              <div class="followup-row"><span class="avatar avatar-staff">DR</span><div><strong>Daniela Ramos</strong><small>Control de rutina</small></div><span class="pill pill-sand">22 nov.</span></div>
             </section>
           </div>
         </div>
         <footer th:replace="~{fragments/ui :: footer}"></footer>
       </main>
     </div>
-
     <th:block th:replace="~{fragments/ui :: dialogs}"></th:block>
   </body>
 </html>

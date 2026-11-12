@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Mi historial')}"></head>
+  <body>
+    <aside th:replace="~{fragments/client-sidebar :: sidebar('historial', ${cliente})}"></aside>
+    <div class="app-main"><header th:replace="~{fragments/client-navbar :: navbar('Mi historial', ${cliente})}"></header><main class="page-content">
+      <div class="page-heading"><div><h1>Mi historial</h1></div></div>
+      <section class="panel"><div class="timeline"><article class="timeline-entry" th:each="sesion : ${sesiones}"><time class="timeline-date" th:text="${#temporals.format(sesion.fecha, 'dd MMM yyyy')}">18 SEP 2026</time><h2 th:text="${sesion.servicio}">Hidratación</h2><div class="timeline-meta"><span><i class="bi bi-clock"></i><span th:text="${sesion.duracionMinutos + ' min'}">90 min</span></span><span><i class="bi bi-person"></i><span th:text="${sesion.especialista}">Andrea Salazar</span></span></div><p th:text="${sesion.resultado}">Resultado</p></article></div></section>
+    </main></div>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <header th:fragment="navbar(title, cliente)" class="topbar">
+      <div class="d-flex align-items-center gap-3 min-width-0"><button class="icon-button d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar" aria-controls="sidebar" aria-label="Abrir menú"><i class="bi bi-list"></i></button><span class="topbar-title" th:text="${title}">Mi inicio</span></div>
+      <div class="topbar-actions"><span class="client-top-name d-none d-sm-inline" th:text="${cliente.nombreCompleto}">Valeria Mendoza</span><span class="avatar avatar-olive" th:text="${cliente.iniciales}">VM</span></div>
+    </header>
+  </body>
+</html>

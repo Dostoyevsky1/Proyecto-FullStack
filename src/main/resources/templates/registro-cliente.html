@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="~{fragments/head :: head('Crear cuenta')}"></head>
+  <body class="onboarding-page">
+    <main class="onboarding-shell">
+      <a class="brand onboarding-brand" th:href="@{/}"><img th:src="@{/img/logo/zambacare.svg}" width="42" height="42" alt="" /><span><strong>Zambacare</strong></span></a>
+      <section class="onboarding-card">
+        <div class="onboarding-heading"><span class="step-indicator">1 de 3</span><h1>Crea tu cuenta</h1></div>
+        <form th:action="@{/registro}" method="post">
+          <div class="row g-3">
+            <div class="col-12 col-md-6"><label class="form-label" for="nombres">Nombres</label><input class="form-control" id="nombres" name="nombres" required /></div>
+            <div class="col-12 col-md-6"><label class="form-label" for="apellidos">Apellidos</label><input class="form-control" id="apellidos" name="apellidos" required /></div>
+            <div class="col-12"><label class="form-label" for="correo">Correo electrónico</label><input class="form-control" id="correo" name="correo" type="email" required /></div>
+            <div class="col-12"><label class="form-label" for="telefono">Teléfono</label><input class="form-control" id="telefono" name="telefono" required /></div>
+            <div class="col-12"><label class="form-label" for="clave">Contraseña</label><input class="form-control" id="clave" name="clave" type="password" minlength="8" required /></div>
+          </div>
+          <button class="btn btn-primary w-100 mt-4" type="submit">Continuar</button>
+        </form>
+        <a class="onboarding-back" th:href="@{/}">Volver al inicio</a>
+      </section>
+    </main>
+  </body>
+</html>
