@@ -1,12 +1,12 @@
 # Zambacare
 
-Zambacare es un sistema web de gestión y seguimiento capilar. El segundo avance conecta la interfaz con un backend en Spring Boot y una base de datos MySQL para administrar clientes, diagnósticos, planes de tratamiento, sesiones, evolución fotográfica y membresías mensuales.
+Zambacare es un sistema web de gestión y seguimiento capilar. El segundo avance conecta la interfaz con un backend en Spring Boot y Spring Data JPA para administrar clientes, diagnósticos, planes de tratamiento, sesiones, evolución fotográfica y membresías mensuales.
 
 El sistema tiene dos recorridos. El especialista gestiona la información capilar y registra cada atención. El cliente crea su cuenta, realiza un pago mensual simulado y consulta su plan, los tiempos estimados, su historial y las comparaciones de antes y después.
 
 ## Funciones implementadas
 
-- Registro y consulta de clientes desde MySQL.
+- Registro y consulta de clientes mediante Spring Data JPA.
 - Diagnósticos capilares asociados a un cliente.
 - Planes con objetivo, sesiones y duración estimada.
 - Registro de tratamientos e historial de servicios.
@@ -25,6 +25,7 @@ El sistema tiene dos recorridos. El especialista gestiona la información capila
 - Spring Data JPA
 - Thymeleaf
 - MySQL
+- H2 para demostraciones sin un servidor de base de datos externo
 - Bootstrap 5.3
 - JavaScript Vanilla
 - Maven
@@ -56,6 +57,8 @@ $env:DB_PASSWORD="tu_contraseña"
 
 Luego abre [http://localhost:8080](http://localhost:8080).
 
+Si no se configuran estas variables, la aplicación utiliza automáticamente una base H2 temporal. Esto permite ejecutarla y desplegarla en Render con los datos sintéticos sin depender de un servidor MySQL externo. Para conservar los registros entre reinicios se deben configurar las variables anteriores con una base MySQL disponible en la red.
+
 ## Accesos para la exposición
 
 Especialista:
@@ -77,7 +80,7 @@ Cuando la base está vacía, `DataInitializer` registra ocho clientes y el segui
 .\mvnw.cmd test
 ```
 
-Las pruebas cargan el contexto de Spring y verifican las rutas principales con una base aislada de prueba. La aplicación normal utiliza MySQL.
+Las pruebas cargan el contexto de Spring y verifican las rutas principales con una base H2 aislada. La aplicación utiliza MySQL cuando se proporcionan `DB_URL`, `DB_USERNAME` y `DB_PASSWORD`; de lo contrario, usa H2 temporal.
 
 ## Alcance pendiente
 
